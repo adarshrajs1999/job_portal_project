@@ -28,6 +28,5 @@ def employer_register(request):
     if request.method == 'POST':
         employer_register_form_data = employer_register_form(request.POST, request.FILES)
         if employer_register_form_data.is_valid():
-            employer_register_form_data.save()
             return redirect('/')
-    return render(request,"employee_register.html",{'employer_register_form_data':employer_register_form_data})
+    return render(request,"employer_register.html",{'employer_register_form_data':employer_register_form_data})

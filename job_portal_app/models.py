@@ -8,7 +8,7 @@ class User_model(AbstractUser):
     is_employer = models.BooleanField(default = False)
     is_jobseeker = models.BooleanField(default = False)
 
-class employer(models.Model):
+class Employer(models.Model):
     user = models.ForeignKey(User_model, on_delete = models.CASCADE, related_name = 'employer_user')
     admin_approval_status = models.BooleanField(default = 0)
     name = models.CharField(max_length = 250)
@@ -18,4 +18,38 @@ class employer(models.Model):
 
     def __str__(self):
         return self.name
+
+class Job_seeker(models.Model):
+    user = models.ForeignKey(User_model, on_delete = models.CASCADE, related_name = 'job_seeker_user')
+    name = models.CharField(max_length=250)
+    phone_number = models.CharField(max_length=12)
+    email = models.EmailField()
+    profile_picture = models.FileField()
+
+    def __str__(self):
+        return self.name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

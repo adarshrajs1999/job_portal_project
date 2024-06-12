@@ -9,6 +9,6 @@ urlpatterns = [
     path('employer_dash/', views.employer_dash, name='employer_dash'),
     path('jobseeker_dash/', views.jobseeker_dash, name='jobseeker_dash'),
     path('employer_register/', views.employer_register, name='employer_register'),
-
+    path('login_page/', views.login_page, name='login_page')
 
 ]

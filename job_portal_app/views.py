@@ -20,6 +20,8 @@ def employer_dash(request):
 def jobseeker_dash(request):
     return render(request,'jobseekr/jobseeker.html')
 
+def login_page(request):
+    return render(request,'login.html')
 
 def employer_register(request):
     employer_register_form_data = employer_register_form()

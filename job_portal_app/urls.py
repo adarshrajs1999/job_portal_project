@@ -7,8 +7,9 @@ urlpatterns = [
     path('dash/', views.dash, name='dash'),
     path('admin_dash/', views.admin_dash, name='admin_dash'),
     path('employer_dash/', views.employer_dash, name='employer_dash'),
+    path('login_page/', views.login_page, name='login_page'),
     path('jobseeker_dash/', views.jobseeker_dash, name='jobseeker_dash'),
     path('employer_register/', views.employer_register, name='employer_register'),
-    path('login_page/', views.login_page, name='login_page')
+    path('jobseeker_register/', views.jobseeker_register, name='jobseeker_register'),
 
 ]

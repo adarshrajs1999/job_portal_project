@@ -1,6 +1,6 @@
 from django import forms
 
-from job_portal_app.models import Employer, User_model
+from job_portal_app.models import Employer, User_model, Jobseeker
 from django.contrib.auth.forms import UserCreationForm
 
 class user_form(UserCreationForm):
@@ -17,3 +17,10 @@ class employer_form(forms.ModelForm):
         model = Employer
         fields = ('__all__')
         exclude = ('user', 'admin_approval_status')
+
+class jobseeker_form(forms.ModelForm):
+    class Meta:
+        model = Jobseeker
+        fields = ('__all__')
+        exclude = ('user',)
+

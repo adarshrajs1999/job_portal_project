@@ -4,9 +4,9 @@
 {% block content %}
 
 <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+   {% csrf_token %}
     {{user_form_data|crispy}}
-   {{employer_form_data|crispy}}
+    {{jobseeker_form_data|crispy}}
     <button type="submit" class="btn btn-warning">Submit</button>
 </form>
 

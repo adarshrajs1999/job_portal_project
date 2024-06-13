@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from job_portal_app.forms import employer_form, user_form
+from job_portal_app.forms import employer_form, user_form, jobseeker_form
 
 
 # Create your views here.
@@ -36,5 +36,21 @@ def employer_register(request):
             employer_object = employer_form_data.save(commit = False)
             employer_object.user = user_object
             employer_object.save()
-            return redirect("/")
+            return redirect('/')
     return render(request,"employer_register.html",{'user_form_data':user_form_data,'employer_form_data':employer_form_data})
+
+def jobseeker_register(request):
+    user_form_data = user_form()
+    jobseeker_form_data = jobseeker_form()
+    if request.method == 'POST':
+        user_form_data = user_form(request.POST)
+        jobseeker_form_data = jobseeker_form(request.POST, request.FILES)
+        if user_form_data.is_valid() and jobseeker_form_data.is_valid():
+            user_object = user_form_data.save(commit = False)
+            user_object.is_jobseeker = True
+            user_object.save()
+            jobseeker_object = jobseeker_form_data.save(commit = False)
+            jobseeker_object.user = user_object
+            jobseeker_object.save()
+            return redirect('/')
+    return render(request,"job_seeker_register.html",{'user_form_data':user_form_data, 'jobseeker_form_data':jobseeker_form_data})

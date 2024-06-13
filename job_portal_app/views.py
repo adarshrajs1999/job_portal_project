@@ -3,7 +3,7 @@ from job_portal_app.forms import employer_form, user_form, jobseeker_form
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
-from job_portal_app.models import Employer
+from job_portal_app.models import Employer, Jobseeker
 
 
 # Create your views here.
@@ -22,7 +22,8 @@ def employer_dash(request):
     return render(request,'employer/employer_dash.html',{'current_employer_object':current_employer_object})
 
 def jobseeker_dash(request):
-    return render(request,'jobseeker/jobseeker_dash.html')
+    current_jobseeker_object = Jobseeker.objects.get(user = request.user)
+    return render(request,'jobseeker/jobseeker_dash.html',{'current_jobseeker_object':current_jobseeker_object})
 
 def login_page(request):
     return render(request,'login.html')

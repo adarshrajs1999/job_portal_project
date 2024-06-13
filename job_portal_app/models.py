@@ -14,7 +14,7 @@ class Employer(models.Model):
     name = models.CharField(max_length = 250)
     phone_number = models.CharField(max_length = 12)
     email = models.EmailField()
-    profile_picture = models.FileField()
+    profile_picture = models.FileField(upload_to = 'clients_docs')
 
     def __str__(self):
         return self.name

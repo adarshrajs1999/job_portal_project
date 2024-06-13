@@ -4,7 +4,9 @@
 {% block content %}
 
 <form method="POST" enctype="multipart/form-data">
-   {{employer_register_form_data|crispy}}
+    {% csrf_token %}
+    {{user_form_data|crispy}}
+   {{employer_form_data|crispy}}
     <button type="submit" class="btn btn-warning">Submit</button>
 </form>
 

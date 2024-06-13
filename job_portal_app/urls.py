@@ -11,5 +11,7 @@ urlpatterns = [
     path('jobseeker_dash/', views.jobseeker_dash, name='jobseeker_dash'),
     path('employer_register/', views.employer_register, name='employer_register'),
     path('jobseeker_register/', views.jobseeker_register, name='jobseeker_register'),
+    path('login/', views.login_view, name='login_view'),
+    path('logout/', views.logout_view, name='logout_view')
 
 ]

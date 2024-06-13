@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-
 from job_portal_app.forms import employer_form, user_form, jobseeker_form
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 
 
 # Create your views here.
@@ -18,7 +19,7 @@ def employer_dash(request):
     return render(request,'employer/employer_dash.html')
 
 def jobseeker_dash(request):
-    return render(request,'jobseekr/jobseeker.html')
+    return render(request,'jobseeker/jobseeker_dash.html')
 
 def login_page(request):
     return render(request,'login.html')
@@ -54,3 +55,25 @@ def jobseeker_register(request):
             jobseeker_object.save()
             return redirect('/')
     return render(request,"job_seeker_register.html",{'user_form_data':user_form_data, 'jobseeker_form_data':jobseeker_form_data})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user_object = authenticate(username = username, password = password)
+        if user_object is not None:
+            login(request, user_object)
+            if user_object.is_staff:
+                return redirect('admin_dash')
+            elif user_object.is_employer:
+                return redirect('employer_dash')
+            elif user_object.is_jobseeker:
+                return redirect('jobseeker_dash')
+        else:
+            messages.info("Invalid credentials")
+    return render(request,'login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')

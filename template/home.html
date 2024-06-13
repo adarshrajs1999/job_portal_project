@@ -47,15 +47,35 @@
 
           </a>
           <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+          <nav class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
-              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="#">Home</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href=" {% static '#features' %} ">Jobs</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href=" {% static '#pricing' %} ">Career tips</a></li>
+              <li class="nav-item px-2">
+                  <a class="nav-link fw-medium active" aria-current="page" href="{% url 'employer_register' %}">
+                  <button class="btn btn-lg btn-primary rounded-pill bg-gradient order-0">
+                  Register as an employer
+                  </button>
+                  </a>
+              </li>
+              <li class="nav-item px-2">
+                  <a class="nav-link fw-medium active" aria-current="page" href="{% url 'jobseeker_register' %}">
+                  <button class="btn btn-lg btn-primary rounded-pill bg-gradient order-0">
+                  Register as a jobseeker
+                  </button>
+                  </a>
+<!--              </li>-->
+<!--&lt;!&ndash;              <li class="nav-item px-2"><a class="nav-link fw-medium" href=" {% static '#pricing' %} ">Career tips</a></li>&ndash;&gt;-->
+<!--            <li class="nav-item px-2">-->
+<!--             <a href="{% url 'login_view' %}">-->
+<!--             <button class="btn btn-lg btn-primary rounded-pill bg-gradient order-0">-->
+<!--                 Log in-->
+<!--             </button>-->
+<!--             </a>-->
+<!--            </li>-->
+                  <div style="transform:translateX(-200px);">
+                  <a href="{% url 'login_view' %}"><button class="btn btn-lg btn-primary rounded-pill bg-gradient order-0">log in</button></a>
+                </div>
             </ul>
-            <form class="ps-lg-5">
-              <button class="btn btn-lg btn-primary rounded-pill bg-gradient order-0" type="submit">Sign In</button>
-            </form>
+          </nav>
           </div>
         </div>
       </nav>
@@ -727,6 +747,7 @@
     <script src=" {% static 'home/assets/js/theme.js' %} "></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap" rel="stylesheet">
-  </body>
+    </main>
+</body>
 
 </html>

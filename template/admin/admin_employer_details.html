@@ -1,0 +1,33 @@
+{% extends 'admin/admin_dash.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">phone number</th>
+      <th scope="col">email</th>
+      <th scope="col">profile picture</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in employer_objects %}
+    <tr>
+      <th scope="row">{{i.id}}</th>
+      <td>{{i.name}}</td>
+      <td>{{i.phone_number}}</td>
+      <td>{{i.email}}</td>
+      <td style="position:relative;"><img src="{{i.profile_picture.url}}" style="position:absolute;width:90%;height:100%;"></td>
+      <td><a href=""><button class="btn btn-info">Update</button></a></td>
+      <td><a href=""><button class="btn btn-danger">Delete</button></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

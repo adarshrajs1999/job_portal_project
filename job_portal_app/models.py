@@ -21,8 +21,8 @@ class Employer(models.Model):
 
 class Jobseeker(models.Model):
     user = models.ForeignKey(User_model, on_delete = models.CASCADE, related_name = 'job_seeker_user')
-    name = models.CharField(max_length=250)
-    phone_number = models.CharField(max_length=12)
+    name = models.CharField(max_length = 250)
+    phone_number = models.CharField(max_length = 12)
     email = models.EmailField()
     profile_picture = models.FileField()
 

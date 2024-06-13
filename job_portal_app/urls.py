@@ -1,6 +1,6 @@
 from django.urls import path
 
-from job_portal_app import views
+from job_portal_app import views, admin_views
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -12,6 +12,7 @@ urlpatterns = [
     path('employer_register/', views.employer_register, name='employer_register'),
     path('jobseeker_register/', views.jobseeker_register, name='jobseeker_register'),
     path('login/', views.login_view, name='login_view'),
-    path('logout/', views.logout_view, name='logout_view')
+    path('logout/', views.logout_view, name='logout_view'),
+    path('admin_employer_details/', admin_views.admin_employer_details, name='admin_employer_details')
 
 ]

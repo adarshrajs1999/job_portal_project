@@ -24,10 +24,11 @@
       <td>{{i.feedback}}</td>
       <td>
       {% if i.reply == None %}
-        <a href="{% url 'admin_feedback_reply' i.id  %}"><button class="btn btn-danger">Give Reply</button></a>
+        <a href="{% url 'admin_feedback_reply' i.id  %}"><button class="btn btn-success">Give Reply</button></a>
       {% else %}
       {{i.reply}}
       {% endif %}
+        <a href="{% url 'admin_feedback_delete' i.id  %}" onclick="confirm_delete()"><button class="btn btn-danger">Delete reply</button></a>
       </td>
     </tr>
     {% endfor %}

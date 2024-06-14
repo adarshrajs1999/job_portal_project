@@ -66,7 +66,7 @@
       </li>
 
       <li>
-        <a href=" {% static 'tables.html' %} ">
+        <a href=" {% url 'jobseeker_view_feedbacks' %} ">
           <i class="zmdi zmdi-grid"></i> <span>View my feedbacks</span>
         </a>
       </li>
@@ -531,6 +531,25 @@ if(!confirm_logout)
 event.preventDefault()
 }
 }
+
+confirm_remove = function()
+{
+let confirm_delete = confirm("Are you sure you want to remove!")
+if(!confirm_delete)
+{
+event.preventDefault()
+}
+}
+
+confirm_delete = function()
+{
+let confirm_delete = confirm("Are you sure you want to delete!")
+if(!confirm_delete)
+{
+event.preventDefault()
+}
+}
+
 </script>
 
 </body>

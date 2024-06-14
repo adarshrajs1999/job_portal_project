@@ -60,7 +60,7 @@ def admin_jobseeker_delete(request, id):
     return redirect('admin_jobseeker_details')
 def admin_view_feedbacks(request):
     feedback_objects = Feedback.objects.all()
-    return render(request,'admin/admin_feedbacks.html',{'feedback_objects':feedback_objects})
+    return render(request,'admin/admin_view_feedbacks.html',{'feedback_objects':feedback_objects})
 
 def admin_feedback_reply(request, id):
     feedback_object = Feedback.objects.get(id = id)
@@ -70,3 +70,8 @@ def admin_feedback_reply(request, id):
         feedback_object.save()
         return redirect('admin_view_feedbacks')
     return render(request,'admin/admin_feedback_reply.html',{'feedback_object':feedback_object})
+
+def admin_feedback_delete(request, id):
+    feedback_object = Feedback.objects.get(id=id)
+    feedback_object.delete()
+    return redirect('admin_view_feedbacks')

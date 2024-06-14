@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin_jobseeker_delete/<int:id>/', admin_views.admin_jobseeker_delete, name='admin_jobseeker_delete'),
     path('jobseeker_feedback/', jobseeker_views.jobseeker_feedback, name='jobseeker_feedback'),
     path('admin_view_feedbacks/', admin_views.admin_view_feedbacks, name='admin_view_feedbacks'),
-    path('admin_feedback_reply/<int:id>/', admin_views.admin_feedback_reply, name='admin_feedback_reply')
-
+    path('admin_feedback_reply/<int:id>/', admin_views.admin_feedback_reply, name='admin_feedback_reply'),
+    path('jobseeker_view_feedbacks/',jobseeker_views.jobseeker_view_feedbacks,name = 'jobseeker_view_feedbacks'),
+    path('jobseeker_feedback_delete/<int:id>/', jobseeker_views.jobseeker_feedback_delete, name='jobseeker_feedback_delete'),
+    path('admin_feedback_delete/<int:id>/',admin_views.admin_feedback_delete,name="admin_feedback_delete")
 ]

@@ -29,3 +29,9 @@ class employer_update_form(forms.ModelForm):
         model = Employer
         fields = ('__all__')
         exclude = ('user', 'admin_approval_status')
+
+class jobseeker_update_form(forms.ModelForm):
+    class Meta:
+        model = Jobseeker
+        fields = ('__all__')
+        exclude = ('user',)

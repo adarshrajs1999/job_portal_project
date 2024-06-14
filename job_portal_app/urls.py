@@ -17,7 +17,10 @@ urlpatterns = [
     path('remove_employer_request/<int:id>/', admin_views.remove_employer_request, name='remove_employer_request'),
     path('approve_employer/<int:id>/', admin_views.approve_employer, name='approve_employer'),
     path('admin_employer_details/', admin_views.admin_employer_details, name='admin_employer_details'),
-    path('employer_update/<int:pk>/', admin_views.admin_employer_update, name='admin_employer_update'),
+    path('admin_employer_update/<int:pk>/', admin_views.admin_employer_update, name='admin_employer_update'),
     path('admin_employer_remove/<int:id>/', admin_views.admin_employer_remove, name='admin_employer_remove'),
+    path('admin_jobseeker_details/', admin_views.admin_jobseeker_details, name='admin_jobseeker_details'),
+    path('admin_jobseeker_update/<int:pk>/', admin_views.admin_jobseeker_update, name='admin_jobseeker_update'),
+    path('admin_jobseeker_delete/<int:id>/', admin_views.admin_jobseeker_delete, name='admin_jobseeker_delete'),
 
 ]

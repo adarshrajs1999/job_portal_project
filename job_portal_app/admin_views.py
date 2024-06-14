@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from job_portal_app.models import Employer
-from job_portal_app.forms import employer_update_form
+from job_portal_app.models import Employer, Jobseeker
+from job_portal_app.forms import employer_update_form, jobseeker_update_form
 
 
 def employer_approval_requests(request):
@@ -15,7 +15,8 @@ def approve_employer(request, id):
 
 def remove_employer_request(request, id):
     employer_object = Employer.objects.get(id=id)
-    employer_object.user.delete()
+    user_object = employer_object.user
+    user_object.delete()
     return redirect('employer_approval_requests')
 
 def admin_employer_details(request):
@@ -37,6 +38,26 @@ def admin_employer_remove(request, id):
     employer_object.admin_approval_status = 0
     employer_object.save()
     return redirect('admin_employer_details')
+
+def admin_jobseeker_details(request):
+    jobseeker_objects = Jobseeker.objects.all()
+    return render(request, "admin/admin_jobseeker_details.html",{'jobseeker_objects':jobseeker_objects})
+
+def admin_jobseeker_update(request, pk):
+    jobseeker_object = Jobseeker.objects.get(pk=pk)
+    jobseeker_update_form_data = jobseeker_update_form(instance = jobseeker_object)
+    if request.method == 'POST':
+        jobseeker_update_form_data = jobseeker_update_form(request.POST, instance = jobseeker_object)
+        if jobseeker_update_form_data.is_valid():
+            jobseeker_update_form_data.save()
+            return redirect('admin_jobseeker_details')
+    return render(request, 'admin/admin_jobseeker_update.html',{'jobseeker_update_form_data':jobseeker_update_form_data})
+
+def admin_jobseeker_delete(request, id):
+    jobseeker_object = Jobseeker.objects.get(id = id)
+    user_object = jobseeker_object.user
+    user_object.delete()
+    return redirect('admin_jobseeker_details')
 
 
 

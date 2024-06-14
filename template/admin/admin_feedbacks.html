@@ -1,0 +1,37 @@
+{% extends 'admin/admin_dash.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">jobseeker name</th>
+      <th scope="col">date</th>
+      <th scope="col">subject</th>
+      <th scope="col">feedback</th>
+      <th scope="col">reply</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in feedback_objects %}
+    <tr>
+      <th scope="row">{{i.id}}</th>
+      <td>{{i.jobseeker.name}}</td>
+      <td>{{i.date}}</td>
+      <td>{{i.subject}}</td>
+      <td>{{i.feedback}}</td>
+      <td>
+      {% if i.reply == None %}
+        <a href="{% url 'admin_feedback_reply' i.id  %}"><button class="btn btn-danger">Give Reply</button></a>
+      {% else %}
+      {{i.reply}}
+      {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

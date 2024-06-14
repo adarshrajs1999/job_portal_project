@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from job_portal_app.models import Employer, Jobseeker
+from job_portal_app.models import Employer, Jobseeker, Feedback
 from job_portal_app.forms import employer_update_form, jobseeker_update_form
 
 
@@ -58,6 +58,15 @@ def admin_jobseeker_delete(request, id):
     user_object = jobseeker_object.user
     user_object.delete()
     return redirect('admin_jobseeker_details')
+def admin_view_feedbacks(request):
+    feedback_objects = Feedback.objects.all()
+    return render(request,'admin/admin_feedbacks.html',{'feedback_objects':feedback_objects})
 
-
-
+def admin_feedback_reply(request, id):
+    feedback_object = Feedback.objects.get(id = id)
+    if request.method == 'POST':
+        reply = request.POST.get('reply')
+        feedback_object.reply = reply
+        feedback_object.save()
+        return redirect('admin_view_feedbacks')
+    return render(request,'admin/admin_feedback_reply.html',{'feedback_object':feedback_object})

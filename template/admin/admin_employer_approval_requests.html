@@ -6,25 +6,23 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
       <th scope="col">name</th>
       <th scope="col">phone number</th>
       <th scope="col">email</th>
       <th scope="col">profile picture</th>
-      <th scope="col">Update</th>
-      <th scope="col">Delete</th>
+      <th scope="col">Approve</th>
+      <th scope="col">Remove</th>
     </tr>
   </thead>
   <tbody>
   {% for i in employer_objects %}
     <tr>
-      <th scope="row">{{i.id}}</th>
       <td>{{i.name}}</td>
       <td>{{i.phone_number}}</td>
       <td>{{i.email}}</td>
       <td style="position:relative;"><img src="{{i.profile_picture.url}}" style="position:absolute;width:90%;height:100%;"></td>
-      <td><a href="{% url 'admin_update_employer' i.id %}"><button class="btn btn-info">Update</button></a></td>
-      <td><a href=""><button class="btn btn-danger">Delete</button></a></td>
+      <td><a href="{% url 'approve_employer' i.id %}"><button class="btn btn-success">Approve</button></a></td>
+      <td><a href=""><button class="btn btn-danger">Remove</button></a></td>
     </tr>
     {% endfor %}
   </tbody>

@@ -49,38 +49,38 @@
       <li class="sidebar-header">MAIN NAVIGATION</li>
       <li>
         <a href=" {% static 'index.html' %} ">
-          <a href="{% url 'admin_employer_details' %}"><i class="zmdi zmdi-view-dashboard"></i><span>Employer details</span></a>
+          <a href="{% url 'employer_approval_requests' %}"><i class="zmdi zmdi-view-dashboard"></i><span>Employer approval requests</span></a>
         </a>
       </li>
 
       <li>
-        <a href=" {% static 'icons.html' %} ">
-          <i class="zmdi zmdi-invert-colors"></i> <span>Job seeker details</span>
+        <a href=" {% url 'admin_employer_details' %} ">
+          <i class="zmdi zmdi-invert-colors"></i> <span>View approved employer details</span>
         </a>
       </li>
 
       <li>
         <a href=" {% static 'forms.html' %} ">
-          <i class="zmdi zmdi-format-list-bulleted"></i> <span>View job posts</span>
+          <i class="zmdi zmdi-format-list-bulleted"></i> <span>Job seeker details</span>
         </a>
       </li>
 
       <li>
         <a href=" {% static 'tables.html' %} ">
-          <i class="zmdi zmdi-grid"></i> <span>View job applications</span>
+          <i class="zmdi zmdi-grid"></i> <span>View job posts</span>
         </a>
       </li>
 
       <li>
         <a href=" {% static 'calendar.html' %} ">
-          <i class="zmdi zmdi-calendar-check"></i> <span>View job seekers feedbacks</span>
-          <small class="badge float-right badge-light">New</small>
+          <i class="zmdi zmdi-calendar-check"></i> <span>View job applications</span>
+<!--          <small class="badge float-right badge-light">New</small>-->
         </a>
       </li>
 
       <li>
         <a href=" {% static 'profile.html' %} ">
-          <i class="zmdi zmdi-face"></i> <span>Profile</span>
+          <i class="zmdi zmdi-face"></i> <span>View job seekers feedbacks </span>
         </a>
       </li>
 
@@ -174,11 +174,9 @@
 <!--End topbar header-->
 <!-- dashboard content start    -->
 <div class="content-wrapper">
-    <div class="container-fluid">
         {% block content %}
         <h1>Welcome to the admin dashboard</h1>
         {% endblock %}
-    </div>
 </div>
 <!--<div class="clearfix"></div>-->
 <!--	-->

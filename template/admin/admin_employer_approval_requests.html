@@ -21,8 +21,8 @@
       <td>{{i.phone_number}}</td>
       <td>{{i.email}}</td>
       <td style="position:relative;"><img src="{{i.profile_picture.url}}" style="position:absolute;width:90%;height:100%;"></td>
-      <td><a href="{% url 'approve_employer' i.id %}"><button class="btn btn-success">Approve</button></a></td>
-      <td><a href=""><button class="btn btn-danger">Remove</button></a></td>
+      <td><a href="{% url 'approve_employer' i.id %}"><button class="btn btn-success">Approve<br>as employer</button></a></td>
+      <td><a href="{% url 'remove_employer_request' i.id %}" onclick="confirm_remove()"><button class="btn btn-danger">Remove<br>request<br></button></a></td>
     </tr>
     {% endfor %}
   </tbody>

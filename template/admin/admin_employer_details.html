@@ -23,8 +23,8 @@
       <td>{{i.phone_number}}</td>
       <td>{{i.email}}</td>
       <td style="position:relative;"><img src="{{i.profile_picture.url}}" style="position:absolute;width:90%;height:100%;"></td>
-      <td><a href="{% url 'admin_update_employer' i.id %}"><button class="btn btn-info">Update</button></a></td>
-      <td><a href=""><button class="btn btn-danger">Delete</button></a></td>
+      <td><a href="{% url 'admin_employer_update' i.id %}"><button class="btn btn-info">Update<br>details</button></a></td>
+      <td><a href="{% url 'admin_employer_remove' i.id %}"><button class="btn btn-danger" onclick="confirm_remove()">Remove<br>approval</button></a></td>
     </tr>
     {% endfor %}
   </tbody>

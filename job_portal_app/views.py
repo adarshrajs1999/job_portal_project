@@ -67,15 +67,21 @@ def login_view(request):
         password = request.POST.get('password')
         user_object = authenticate(username = username, password = password)
         if user_object is not None:
-            login(request, user_object)
-            if user_object.is_staff:
+            if user_object.is_employer:
+                employer_object = Employer.objects.get(user = user_object)
+                if employer_object.admin_approval_status == 1:
+                    login(request, user_object)
+                    return redirect('employer_dash')
+                else:
+                    messages.info(request,"Currently this user is not approved by admin!")
+            elif user_object.is_staff:
+                login(request, user_object)
                 return redirect('admin_dash')
-            elif user_object.is_employer:
-                return redirect('employer_dash')
             elif user_object.is_jobseeker:
+                login(request, user_object)
                 return redirect('jobseeker_dash')
         else:
-            messages.info("Invalid credentials")
+            messages.info(request,"Invalid credentials!")
     return render(request,'login.html')
 
 def logout_view(request):

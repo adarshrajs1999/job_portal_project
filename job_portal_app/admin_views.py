@@ -13,11 +13,16 @@ def approve_employer(request, id):
     employer_object.save()
     return redirect('employer_approval_requests')
 
+def remove_employer_request(request, id):
+    employer_object = Employer.objects.get(id=id)
+    employer_object.user.delete()
+    return redirect('employer_approval_requests')
+
 def admin_employer_details(request):
     employer_objects = Employer.objects.filter(admin_approval_status = 1)
     return render(request, "admin/admin_employer_details.html",{'employer_objects':employer_objects})
 
-def admin_update_employer(request, pk):
+def admin_employer_update(request, pk):
     employer_object = Employer.objects.get(pk=pk)
     employer_update_form_data = employer_update_form(instance = employer_object)
     if request.method == 'POST':
@@ -27,6 +32,11 @@ def admin_update_employer(request, pk):
             return redirect('admin_employer_details')
     return render(request, 'admin/employer_update.html',{'employer_update_form_data':employer_update_form_data})
 
+def admin_employer_remove(request, id):
+    employer_object = Employer.objects.get(id = id)
+    employer_object.admin_approval_status = 0
+    employer_object.save()
+    return redirect('admin_employer_details')
 
 
 

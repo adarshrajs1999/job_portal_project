@@ -14,8 +14,10 @@ urlpatterns = [
     path('login/', views.login_view, name='login_view'),
     path('logout/', views.logout_view, name='logout_view'),
     path('employer_approval_requests/', admin_views.employer_approval_requests, name='employer_approval_requests'),
+    path('remove_employer_request/<int:id>/', admin_views.remove_employer_request, name='remove_employer_request'),
     path('approve_employer/<int:id>/', admin_views.approve_employer, name='approve_employer'),
     path('admin_employer_details/', admin_views.admin_employer_details, name='admin_employer_details'),
-    path('employer_update/<int:pk>/', admin_views.admin_update_employer, name='admin_update_employer')
+    path('employer_update/<int:pk>/', admin_views.admin_employer_update, name='admin_employer_update'),
+    path('admin_employer_remove/<int:id>/', admin_views.admin_employer_remove, name='admin_employer_remove'),
 
 ]

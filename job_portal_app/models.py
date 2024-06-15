@@ -70,3 +70,13 @@ class Job_post(models.Model):
 
 
 
+
+
+
+
+
+
+
+
+
+

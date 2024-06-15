@@ -33,7 +33,7 @@ urlpatterns = [
     path('employer_add_job_post/',employer_views.employer_add_job_post,name="employer_add_job_post"),
     path('employer_view_my_job_posts',employer_views.employer_view_my_job_posts,name="employer_view_my_job_posts"),
     path('employer_job_post_update/<int:id>/',employer_views.employer_job_post_update,name="employer_job_post_update"),
-    path('employer_job_post_delete/<int:id>/',employer_views.employer_job_post_delete,name="employer_job_post_delete")
-
+    path('employer_job_post_delete/<int:id>/',employer_views.employer_job_post_delete,name="employer_job_post_delete"),
+    path('jobseeker_view_job_posts',jobseeker_views.jobseeker_view_job_posts,name="jobseeker_view_job_posts")
 
 ]

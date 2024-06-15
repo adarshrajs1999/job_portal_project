@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
 from job_portal_app.forms import feedback_form, jobseeker_profile_update_form
-from job_portal_app.models import Jobseeker, Feedback
+from job_portal_app.models import Jobseeker, Feedback, Job_post
 
 
 def jobseeker_feedback(request):
@@ -34,3 +34,7 @@ def jobseeker_profile_update(request):
             jobseeker_profile_update_form_data.save()
             return redirect('jobseeker_profile_update')
     return render(request,"jobseeker/jobseeker_profile_update.html",{'jobseeker_profile_update_form_data':jobseeker_profile_update_form_data})
+
+def jobseeker_view_job_posts(request):
+    job_post_objects = Job_post.objects.all()
+    return render(request,"jobseeker/jobseeker_view_job_posts.html",{'job_post_objects':job_post_objects})

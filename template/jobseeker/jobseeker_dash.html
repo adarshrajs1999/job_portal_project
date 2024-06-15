@@ -48,12 +48,12 @@
    <ul class="sidebar-menu do-nicescrol">
       <li class="sidebar-header">MAIN NAVIGATION</li>
        <li>
-        <a href=" {% url 'jobseeker_profile_update' %} " target="_blank">
+        <a href=" {% url 'jobseeker_profile_update' %}">
           <i class="zmdi zmdi-account-circle"></i> <span>My profile</span>
         </a>
       </li>
       <li>
-        <a href=" {% static 'index.html' %} ">
+        <a href=" {% url 'jobseeker_view_job_posts' %} ">
           <i class="zmdi zmdi-view-dashboard"></i> <span>View job posts</span>
         </a>
       </li>

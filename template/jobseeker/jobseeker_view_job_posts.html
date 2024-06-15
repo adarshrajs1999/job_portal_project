@@ -1,0 +1,29 @@
+{% extends 'jobseeker/jobseeker_dash.html' %}
+
+
+{% block content %}
+
+<div style="display:grid;grid-template-columns:1fr;grid-gap:50px;">
+
+{% for i in job_post_objects %}
+
+<div class="card" style="width:60%;margin:auto;">
+  <img src="{{i.poster_image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">
+      Job roles:{{i.job_roles}}<br>
+      Job descriptions:{{i.job_description}}<br>
+      Job requirements:{{i.requirements}}<br>
+      Required qualification:{{i.educational_qualification}}<br>
+      Last date for application:{{i.application_last_date}}<br>
+
+    </p>
+    <a href="" class="btn btn-warning" style="margin-right:10px;">Apply Now</a>
+  </div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -29,7 +29,7 @@ def jobseeker_profile_update(request):
     jobseeker_object = Jobseeker.objects.get(user = request.user)
     jobseeker_profile_update_form_data = jobseeker_profile_update_form(instance = jobseeker_object)
     if request.method == 'POST':
-        jobseeker_profile_update_form_data = jobseeker_profile_update_form(request.POST,instance = jobseeker_object)
+        jobseeker_profile_update_form_data = jobseeker_profile_update_form(request.POST,request.FILES,instance = jobseeker_object)
         if jobseeker_profile_update_form_data.is_valid():
             jobseeker_profile_update_form_data.save()
             return redirect('jobseeker_profile_update')

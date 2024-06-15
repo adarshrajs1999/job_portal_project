@@ -14,7 +14,7 @@ class Employer(models.Model):
     name = models.CharField(max_length = 250)
     phone_number = models.CharField(max_length = 12)
     email = models.EmailField()
-    profile_picture = models.FileField(upload_to = 'my_files')
+    profile_picture = models.FileField(upload_to = 'my_files',blank = True,null = True)
 
     def __str__(self):
         return self.name
@@ -24,7 +24,8 @@ class Jobseeker(models.Model):
     name = models.CharField(max_length = 250)
     phone_number = models.CharField(max_length = 12)
     email = models.EmailField()
-    profile_picture = models.FileField(upload_to = 'my_files')
+    profile_picture = models.FileField(upload_to = 'my_files',blank = True,null = True)
+    resume= models.FileField(upload_to = 'my_files',blank = True,null = True)
 
     def __str__(self):
         return self.name

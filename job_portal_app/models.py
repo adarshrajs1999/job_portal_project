@@ -39,11 +39,11 @@ class Feedback(models.Model):
 
 class Job_post(models.Model):
     employer = models.ForeignKey(Employer,on_delete = models.CASCADE,related_name = "job_post_jobseeker")
-    image = models.FileField(upload_to = 'my_files')
-    job_role = models.CharField(max_length = 250)
-    qualification = models.CharField(max_length = 250)
+    poster_image = models.FileField(upload_to = 'my_files')
+    job_roles = models.CharField(max_length = 500)
     job_description = models.TextField()
     requirements = models.TextField()
+    educational_qualification = models.CharField(max_length=250)
     application_last_date = models.DateField()
     posted_date = models.DateField(auto_now=True)
 

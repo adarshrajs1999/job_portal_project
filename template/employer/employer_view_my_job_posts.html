@@ -1,0 +1,23 @@
+{% extends 'employer/employer_dash.html' %}
+
+
+{% block content %}
+
+<div style="display:grid;grid-template-columns:1fr;grid-gap:50px;">
+
+{% for i in job_post_objects %}
+
+<div class="card" style="width:60%;margin:auto;">
+  <img src="{{i.poster_image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-warning" style="margin-right:10px;">Update</a>
+    <a href="#" class="btn btn-danger">Delete</a>
+  </div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

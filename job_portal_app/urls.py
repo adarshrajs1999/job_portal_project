@@ -30,8 +30,8 @@ urlpatterns = [
     path('admin_feedback_delete/<int:id>/',admin_views.admin_feedback_delete,name="admin_feedback_delete"),
     path('employer_profile_update/',employer_views.employer_profile_update,name = 'employer_profile_update'),
     path('jobseeker_profile_update/',jobseeker_views.jobseeker_profile_update,name = 'jobseeker_profile_update'),
-    path('employer_add_job_post/',employer_views.employer_add_job_post,name="employer_add_job_post")
-
+    path('employer_add_job_post/',employer_views.employer_add_job_post,name="employer_add_job_post"),
+    path('employer_view_my_job_posts',employer_views.employer_view_my_job_posts,name="employer_view_my_job_posts")
 
 
 ]

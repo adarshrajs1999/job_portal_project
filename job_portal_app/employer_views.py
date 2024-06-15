@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from job_portal_app.forms import employer_profile_update_form, job_post_form
-from job_portal_app.models import Employer
+from job_portal_app.models import Employer, Job_post
 
 
 def employer_profile_update(request):
@@ -26,3 +26,7 @@ def employer_add_job_post(request):
             return redirect('employer_dash')
     return render(request,'employer/employer_add_job_post.html',{'job_post_form_object':job_post_form_object})
 
+def employer_view_my_job_posts(request):
+    current_employer_object = Employer.objects.get(user = request.user)
+    job_post_objects= Job_post.objects.filter(employer = current_employer_object)
+    return render(request,"employer/employer_view_my_job_posts.html",{'job_post_objects':job_post_objects})

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from job_portal_app.forms import employer_profile_update_form, job_post_form
+from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form
 from job_portal_app.models import Employer, Job_post
 
 
@@ -30,3 +30,24 @@ def employer_view_my_job_posts(request):
     current_employer_object = Employer.objects.get(user = request.user)
     job_post_objects= Job_post.objects.filter(employer = current_employer_object)
     return render(request,"employer/employer_view_my_job_posts.html",{'job_post_objects':job_post_objects})
+
+def employer_job_post_update(request, id):
+    job_post_object = Job_post.objects.get(id =id)
+    job_post_update_form_object = job_post_update_form(instance = job_post_object)
+    if request.method == 'POST':
+        job_post_update_form_object = job_post_update_form(request.POST,request.FILES,instance = job_post_object)
+        if job_post_update_form_object.is_valid():
+            job_post_update_form_object.save()
+            return redirect('employer_view_my_job_posts')
+    return render(request,"employer/employer_job_post_update.html",{'job_post_update_form_object':job_post_update_form_object})
+
+def employer_job_post_delete(request, id):
+    job_post_object =Job_post.objects.get(id =id)
+    job_post_object.delete()
+    return redirect('employer_view_my_job_posts')
+
+
+
+
+
+

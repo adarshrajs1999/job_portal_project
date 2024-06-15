@@ -64,5 +64,11 @@ class job_post_form(forms.ModelForm):
         fields = ('__all__')
         exclude = ('employer',)
 
+class job_post_update_form(forms.ModelForm):
+    class Meta:
+        model = Job_post
+        fields = ('__all__')
+        exclude = ('employer',)
+
 
 

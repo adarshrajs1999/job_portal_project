@@ -1,0 +1,12 @@
+{% extends 'employer/employer_dash.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{job_post_form_object|crispy}}
+    <button type="submit" class="btn btn-warning">Submit</button>
+</form>
+
+{% endblock %}

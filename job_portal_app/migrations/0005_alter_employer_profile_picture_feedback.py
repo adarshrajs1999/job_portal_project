@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='employer',
             name='profile_picture',
-            field=models.FileField(upload_to='clients_docs'),
+            field=models.FileField(upload_to='my_files'),
         ),
         migrations.CreateModel(
             name='Feedback',

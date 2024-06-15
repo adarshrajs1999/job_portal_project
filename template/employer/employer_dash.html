@@ -48,19 +48,19 @@
    <ul class="sidebar-menu do-nicescrol">
       <li class="sidebar-header">MAIN NAVIGATION</li>
         <li>
-        <a href=" {% static 'register.html' %} " target="_blank">
+        <a href=" {% url 'employer_profile_update' %} " target="_blank">
           <i class="zmdi zmdi-account-circle"></i> <span>My profile</span>
         </a>
       </li>
       <li>
-        <a href=" {% static 'index.html' %} ">
+        <a href=" {% url 'employer_add_job_post' %} ">
           <i class="zmdi zmdi-view-dashboard"></i> <span>Add job post</span>
         </a>
       </li>
 
       <li>
         <a href=" {% static 'icons.html' %} ">
-          <i class="zmdi zmdi-invert-colors"></i> <span>View job posts</span>
+          <i class="zmdi zmdi-invert-colors"></i> <span>View my job posts</span>
         </a>
       </li>
 

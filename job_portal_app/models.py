@@ -14,7 +14,7 @@ class Employer(models.Model):
     name = models.CharField(max_length = 250)
     phone_number = models.CharField(max_length = 12)
     email = models.EmailField()
-    profile_picture = models.FileField(upload_to = 'clients_docs')
+    profile_picture = models.FileField(upload_to = 'my_files')
 
     def __str__(self):
         return self.name
@@ -24,7 +24,7 @@ class Jobseeker(models.Model):
     name = models.CharField(max_length = 250)
     phone_number = models.CharField(max_length = 12)
     email = models.EmailField()
-    profile_picture = models.FileField()
+    profile_picture = models.FileField(upload_to = 'my_files')
 
     def __str__(self):
         return self.name
@@ -37,6 +37,15 @@ class Feedback(models.Model):
     # None-->for python,null-->for database column to indicate the absence of value
     reply = models.TextField(blank = True, null = True)
 
+class Job_post(models.Model):
+    employer = models.ForeignKey(Employer,on_delete = models.CASCADE,related_name = "job_post_jobseeker")
+    image = models.FileField(upload_to = 'my_files')
+    job_role = models.CharField(max_length = 250)
+    qualification = models.CharField(max_length = 250)
+    job_description = models.TextField()
+    requirements = models.TextField()
+    application_last_date = models.DateField()
+    posted_date = models.DateField(auto_now=True)
 
 
 

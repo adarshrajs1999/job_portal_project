@@ -1,5 +1,13 @@
 {% extends 'jobseeker/jobseeker_dash.html' %}
 
+{% block search %}
+<form method="GET" style="display:grid;grid-template-columns:1fr 1fr;">
+{{job_filterset_object.form.educational_qualification}}
+  <button type="submit" class="btn btn-warning" style="width:100px;"><i class="icon-magnifier"></i>Search</button>
+</form>
+
+{% endblock %}
+
 
 {% block content %}
 
@@ -11,20 +19,20 @@
   <img src="{{i.poster_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">
-      Employer:{{i.employer.name}}<br>
-      Job roles:{{i.job_roles}}<br>
-      Job descriptions:{{i.job_description}}<br>
-      Job requirements:{{i.requirements}}<br>
-      Required qualification:{{i.educational_qualification}}<br>
-      Email:{{i.employer.email}}<br>
-      Phone number:{{i.employer.phone_number}}<br>
-      Last date for application:{{i.application_last_date}}<br>
+      Employer : {{i.employer.name}}<br><br>
+      Job roles : {{i.job_roles}}<br><br>
+      Job descriptions : {{i.job_description}}<br><br>
+      Job requirements : {{i.requirements}}<br><br>
+      Required qualification : {{i.educational_qualification}}<br><br>
+      Email : {{i.employer.email}}<br><br>
+      Phone number : {{i.employer.phone_number}}<br><br>
+      Last date for application : {{i.application_last_date}}<br><br>
 
     </p>
     {% if i.apply_status == 0 %}
     <a href="{% url 'job_apply' i.id %}" class="btn btn-warning" style="margin-right:10px;">Apply Now</a>
     {% else %}
-    <h6 style="color:yellow;">Applied!</h6>
+    <h6 style="color:yellow;">You have applied for this job.If your profile is selcted recruiter will personally contact you through email or phone number.</h6>
     {% endif %}
   </div>
 </div>

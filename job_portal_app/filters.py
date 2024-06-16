@@ -6,7 +6,7 @@ from job_portal_app.models import Job_post
 
 
 class Job_filterset(FilterSet):
-    educational_qualification = CharFilter(lookup_expr = 'icontains',widget = forms.TextInput(attrs = {'placeholder':"Search by qualification",'class':'form-control'}))
+    educational_qualification = CharFilter(lookup_expr = 'icontains',widget = forms.TextInput(attrs = {'placeholder':"Search job by qualification",'class':'form-control'}))
     class Meta:
         model = Job_post
         fields = ['educational_qualification',]

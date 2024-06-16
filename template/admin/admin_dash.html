@@ -67,13 +67,13 @@
       </li>
 
       <li>
-        <a href=" {% static 'tables.html' %} ">
+        <a href=" {% url 'admin_view_job_posts' %} ">
           <i class="zmdi zmdi-grid"></i> <span>View job posts</span>
         </a>
       </li>
 
       <li>
-        <a href=" {% static 'calendar.html' %} ">
+        <a href=" {% url 'admin_view_job_applications' %} ">
           <i class="zmdi zmdi-calendar-check"></i> <span>View job applications</span>
 <!--          <small class="badge float-right badge-light">New</small>-->
         </a>
@@ -86,8 +86,8 @@
       </li>
 
       <li>
-        <a href=" {% static 'login.html' %} " target="_blank">
-          <i class="zmdi zmdi-lock"></i> <span>Login</span>
+        <a href=" {% url 'logout_view' %}" onclick="confirm_logout()">
+          <i class="zmdi zmdi-lock"></i> <span>Logout</span>
         </a>
       </li>
 
@@ -145,7 +145,7 @@
     <li class="nav-item">
       <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
         <span class="user-profile">
-            <img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>{{request.user.username}}
+            <img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>
       </a>
       <ul class="dropdown-menu dropdown-menu-right">
        <li class="dropdown-item user-details">

@@ -1,0 +1,25 @@
+{% extends 'jobseeker/jobseeker_dash.html' %}
+
+{% block content %}
+
+<div class="card" style="width:60%;margin:auto;">
+  <img src="{{jobseeker_object.profile_picture.url}}" class="card-img-top" alt="..." height="400px">
+  <div class="card-body">
+    <p class="card-text">
+    <h3>My details</h3>
+    Name:{{jobseeker_object.name}}<br>
+    Phone number:{{jobseeker_object.phone_number}}<br>
+    Email:{{jobseeker_object.email}}<br>
+    <a href="{% url 'jobseeker_profile_update' %}"><button class="btn btn-warning">Update my details</button></a>
+
+
+
+
+
+
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

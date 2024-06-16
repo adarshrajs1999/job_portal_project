@@ -1,0 +1,25 @@
+{% extends 'employer/employer_dash.html' %}
+
+{% block content %}
+
+<div class="card" style="width:60%;margin:auto;">
+  <img src="{{employer_object.profile_picture.url}}" class="card-img-top" alt="..." height="400px">
+  <div class="card-body">
+    <p class="card-text">
+    <h3>My details</h3>
+    Name:{{employer_object.name}}<br>
+    Phone number:{{employer_object.phone_number}}<br>
+    Email:{{employer_object.email}}<br>
+    <a href="{% url 'employer_profile_update' %}"><button class="btn btn-warning">Update my details</button></a>
+
+
+
+
+
+
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

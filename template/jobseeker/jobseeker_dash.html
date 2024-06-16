@@ -50,7 +50,7 @@
       <li class="sidebar-header">MAIN NAVIGATION</li>
        <li>
         <a href=" {% url 'jobseeker_profile_update' %}">
-          <i class="zmdi zmdi-account-circle"></i> <span>My profile</span>
+          <i class="zmdi zmdi-account-circle"></i> <span>View & edit my profile</span>
         </a>
       </li>
       <li>
@@ -91,8 +91,8 @@
       </li>
 
       <li>
-        <a href=" {% static 'login.html' %} " target="_blank">
-          <i class="zmdi zmdi-lock"></i> <span>Login</span>
+        <a href=" {% url 'logout_view' %} " onclick="confirm_logout()">
+          <i class="zmdi zmdi-lock"></i> <span>Logout</span>
         </a>
       </li>
 

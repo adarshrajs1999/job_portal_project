@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form
-from job_portal_app.models import Employer, Job_post
+from job_portal_app.models import Employer, Job_post, Job_application
 
 
 def employer_profile_update(request):
@@ -46,8 +46,14 @@ def employer_job_post_delete(request, id):
     job_post_object.delete()
     return redirect('employer_view_my_job_posts')
 
+def employer_view_job_applications(request):
+    job_application_objects = Job_application.objects.all()
+    return render(request,"employer/employer_view_job_applications.html",{'job_application_objects':job_application_objects})
 
-
+def employer_view_applicants_details(request, id):
+    job_application_object = Job_application.objects.get(id = id)
+    jobseeker_object = job_application_object.jobseeker
+    return render(request,"employer/employer_view_applicants_details.html",{'jobseeker_object':jobseeker_object})
 
 
 

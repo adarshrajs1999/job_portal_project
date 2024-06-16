@@ -41,13 +41,17 @@ def jobseeker_view_job_posts(request):
 
 def job_apply(request, id):
     jobseeker_object = Jobseeker.objects.get(user = request.user)
-    job_post_object = Job_post.objects.get(id =id)
+    job_post_object = Job_post.objects.get(id = id)
     job_application_object = Job_application(jobseeker = jobseeker_object,job_post = job_post_object)
     job_application_object.save()
-    job_application_object.job_post.apply_status = True
+    job_post_object.apply_status = 1
+    job_post_object.save()
     return redirect('jobseeker_view_job_posts')
 
-
+def jobseeker_view_my_job_applications(request):
+    jobseeker_object = Jobseeker.objects.get(user = request.user)
+    job_application_objects = Job_application.objects.filter(jobseeker = jobseeker_object)
+    return render(request,'jobseeker/view_my_job_applications.html',{'job_application_objects':job_application_objects})
 
 
 

@@ -21,7 +21,7 @@
       Last date for application:{{i.application_last_date}}<br>
 
     </p>
-    {% if i.apply_status == 1 %}
+    {% if i.apply_status == 0 %}
     <a href="{% url 'job_apply' i.id %}" class="btn btn-warning" style="margin-right:10px;">Apply Now</a>
     {% else %}
     <h6 style="color:yellow;">Applied!</h6>

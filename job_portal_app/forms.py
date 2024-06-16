@@ -3,6 +3,9 @@ from django import forms
 from job_portal_app.models import Employer, User_model, Jobseeker, Feedback, Job_post
 from django.contrib.auth.forms import UserCreationForm
 
+class date_input(forms.DateInput):
+    input_type = 'date'
+
 class user_form(UserCreationForm):
     username = forms.CharField(label = "username",widget = forms.TextInput(attrs = {'placeholder':'username'}))
     password1 = forms.CharField(label = "password",widget = forms.PasswordInput(attrs = {'placeholder':'password'}))
@@ -19,6 +22,7 @@ class employer_form(forms.ModelForm):
         exclude = ('user', 'admin_approval_status')
 
 class jobseeker_form(forms.ModelForm):
+    dob = forms.DateField(widget = date_input())
     class Meta:
         model = Jobseeker
         fields = ('__all__')
@@ -54,15 +58,13 @@ class jobseeker_profile_update_form(forms.ModelForm):
         fields = ('__all__')
         exclude = ('user',)
 
-class date_input(forms.DateInput):
-    input_type = 'date'
 
 class job_post_form(forms.ModelForm):
     application_last_date = forms.DateField(widget = date_input())
     class Meta:
         model = Job_post
         fields = ('__all__')
-        exclude = ('employer',)
+        exclude = ('employer','apply_status')
 
 class job_post_update_form(forms.ModelForm):
     class Meta:

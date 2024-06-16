@@ -26,6 +26,10 @@ class Jobseeker(models.Model):
     email = models.EmailField()
     profile_picture = models.FileField(upload_to = 'my_files',blank = True,null = True)
     resume= models.FileField(upload_to = 'my_files',blank = True,null = True)
+    qualification = models.CharField(max_length = 250)
+    bio = models.TextField()
+    dob = models.DateField()
+    address = models.TextField()
 
     def __str__(self):
         return self.name
@@ -47,7 +51,7 @@ class Job_post(models.Model):
     educational_qualification = models.CharField(max_length=250)
     application_last_date = models.DateField()
     posted_date = models.DateField(auto_now=True)
-    apply_status = models.BooleanField(default = False)
+    apply_status = models.IntegerField(default = 0)
 
 class Job_application(models.Model):
     jobseeker = models.ForeignKey(Jobseeker,on_delete=models.CASCADE,related_name = "job_application_jobseeker")

@@ -47,7 +47,11 @@ class Job_post(models.Model):
     educational_qualification = models.CharField(max_length=250)
     application_last_date = models.DateField()
     posted_date = models.DateField(auto_now=True)
+    apply_status = models.BooleanField(default = False)
 
+class Job_application(models.Model):
+    jobseeker = models.ForeignKey(Jobseeker,on_delete=models.CASCADE,related_name = "job_application_jobseeker")
+    job_post = models.ForeignKey(Job_post,on_delete=models.CASCADE,related_name = 'job_application_job_post')
 
 
 

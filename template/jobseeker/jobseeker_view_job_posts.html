@@ -11,14 +11,21 @@
   <img src="{{i.poster_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">
+      Employer:{{i.employer.name}}<br>
       Job roles:{{i.job_roles}}<br>
       Job descriptions:{{i.job_description}}<br>
       Job requirements:{{i.requirements}}<br>
       Required qualification:{{i.educational_qualification}}<br>
+      Email:{{i.employer.email}}<br>
+      Phone number:{{i.employer.phone_number}}<br>
       Last date for application:{{i.application_last_date}}<br>
 
     </p>
-    <a href="" class="btn btn-warning" style="margin-right:10px;">Apply Now</a>
+    {% if i.apply_status == 1 %}
+    <a href="{% url 'job_apply' i.id %}" class="btn btn-warning" style="margin-right:10px;">Apply Now</a>
+    {% else %}
+    <h6 style="color:yellow;">Applied!</h6>
+    {% endif %}
   </div>
 </div>
 

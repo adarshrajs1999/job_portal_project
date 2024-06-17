@@ -5,7 +5,7 @@ from job_portal_app.forms import employer_profile_update_form, job_post_form, jo
 from job_portal_app.models import Employer, Job_post, Job_application
 
 
-
+@login_required(login_url = 'login_view')
 def employer_profile_update(request):
     employer_object = Employer.objects.get(user=request.user)
     employer_profile_update_form_data = employer_profile_update_form(instance=employer_object)
@@ -20,7 +20,7 @@ def employer_profile_update(request):
                    'current_employer_object': current_employer_object})
 
 
-
+@login_required(login_url = 'login_view')
 def employer_add_job_post(request):
     employer_object = Employer.objects.get(user=request.user)
     job_post_form_object = job_post_form()
@@ -36,7 +36,7 @@ def employer_add_job_post(request):
                   {'job_post_form_object': job_post_form_object, 'current_employer_object': current_employer_object})
 
 
-
+@login_required(login_url = 'login_view')
 def employer_view_my_job_posts(request):
     job_post_objects = Job_post.objects.filter(employer__user=request.user)
     current_employer_object = Employer.objects.get(user=request.user)
@@ -44,7 +44,7 @@ def employer_view_my_job_posts(request):
                   {'job_post_objects': job_post_objects, 'current_employer_object': current_employer_object})
 
 
-
+@login_required(login_url = 'login_view')
 def employer_job_post_update(request, id):
     job_post_object = Job_post.objects.get(id=id)
     job_post_update_form_object = job_post_update_form(instance=job_post_object)
@@ -59,14 +59,14 @@ def employer_job_post_update(request, id):
                    'current_employer_object': current_employer_object})
 
 
-
+@login_required(login_url = 'login_view')
 def employer_job_post_delete(request, id):
     job_post_object = Job_post.objects.get(id=id)
     job_post_object.delete()
     return redirect('employer_view_my_job_posts')
 
 
-
+@login_required(login_url = 'login_view')
 def employer_view_job_applications(request):
     job_application_objects = Job_application.objects.filter(job_post__employer__user=request.user)
     current_employer_object = Employer.objects.get(user=request.user)
@@ -75,7 +75,7 @@ def employer_view_job_applications(request):
                    'current_employer_object': current_employer_object})
 
 
-
+@login_required(login_url = 'login_view')
 def employer_view_applicants_details(request, id):
     job_application_object = Job_application.objects.get(id=id)
     jobseeker_object = job_application_object.jobseeker

@@ -42,6 +42,6 @@ urlpatterns = [
     path('admin_view_job_posts/',admin_views.admin_view_job_posts,name="admin_view_job_posts"),
     path('admin_view_job_applications',admin_views.admin_view_job_applications,name="admin_view_job_applications"),
     path('admin_view_applicants_details/<int:id>/',admin_views.admin_view_applicants_details,name="admin_view_applicants_details"),
-    path('admin_delete_job_application/<int:id>/',admin_views.admin_delete_job_application,name="admin_delete_job_application")
-
+    path('admin_delete_job_application/<int:id>/',admin_views.admin_delete_job_application,name="admin_delete_job_application"),
+    path('jobseeker_cancel_application/<int:id>/',jobseeker_views.jobseeker_cancel_application,name="jobseeker_cancel_application")
 ]

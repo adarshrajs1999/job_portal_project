@@ -70,4 +70,9 @@ def jobseeker_view_my_job_applications(request):
     return render(request,'jobseeker/view_my_job_applications.html',{'job_application_objects':job_application_objects,'current_jobseeker_object':current_jobseeker_object})
 
 
-
+def jobseeker_cancel_application(request, id):
+    job_application_object = Job_application.objects.get(id = id)
+    job_application_object.job_post.apply_status = 0
+    job_application_object.job_post.save()
+    job_application_object.delete()
+    return redirect('jobseeker_view_my_job_applications')

@@ -20,6 +20,7 @@
       Phone number:{{i.job_post.employer.phone_number}}<br>
       Last date for application:{{i.job_post.application_last_date}}<br>
       Jobseeker name:{{i.jobseeker.name}}
+      <a href="{% url 'jobseeker_cancel_application' i.id %}" class="btn btn-danger" onclick="confirm_cancel()">Cancel this job application</a>
     </p>
   </div>
 </div>

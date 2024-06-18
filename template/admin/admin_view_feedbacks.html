@@ -12,6 +12,7 @@
       <th scope="col">subject</th>
       <th scope="col">feedback</th>
       <th scope="col">reply</th>
+       <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -28,7 +29,9 @@
       {% else %}
       {{i.reply}}
       {% endif %}
-        <a href="{% url 'admin_feedback_delete' i.id  %}" onclick="confirm_delete()"><button class="btn btn-danger">Delete reply</button></a>
+      </td>
+      <td>
+        <a href="{% url 'admin_feedback_delete' i.id  %}" onclick="confirm_delete()"><button class="btn btn-danger">Delete this feedback</button></a>
       </td>
     </tr>
     {% endfor %}

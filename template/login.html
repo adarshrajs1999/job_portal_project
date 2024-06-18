@@ -75,7 +75,8 @@
 <!--			 </div>-->
 <!--			</div>-->
 			 <button type="submit" class="btn btn-light btn-block">Log in</button>
-            </form>
+            </form><br>
+			 <a href="{% url 'home' %}"><button class="btn btn-light btn-block" style="background-color:green;">Go to Home Page</button></a>
 			 {% for i in messages %}
 			 	{{i}}
 			 {% endfor %}
@@ -99,7 +100,7 @@
 <!--	     </div>-->
 
      <!--Start Back To Top Button-->
-    <a href=" {% static 'javaScript:void();' %} " class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+<!--    <a href=" {% static 'javaScript:void();' %} " class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>-->
     <!--End Back To Top Button-->
 
 <!--	&lt;!&ndash;start color switcher&ndash;&gt;-->
@@ -141,7 +142,14 @@
   <!--end color switcher-->
 	
 <!--	</div>&lt;!&ndash;wrapper&ndash;&gt;-->
-	
+
+			</div>
+        </div>
+    </div>
+
+ </div>
+
+
   <!-- Bootstrap core JavaScript-->
   <script src=" {% static 'assets/js/jquery.min.js' %} "></script>
   <script src=" {% static 'assets/js/popper.min.js' %} "></script>
@@ -152,9 +160,6 @@
   
   <!-- Custom scripts -->
   <script src=" {% static 'assets/js/app-script.js' %} "></script>
-         </div>
-        </div>
-    </div>
- </div>
+
 </body>
 </html>

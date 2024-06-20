@@ -1,0 +1,12 @@
+{% extends 'employer/employer_dash.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{user_form_object|crispy}}
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+{% endblock %}

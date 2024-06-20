@@ -14,7 +14,6 @@ def home(request):
     return render(request, 'home.html')
 
 
-@login_required(login_url = 'login_view')
 def dash(request):
     return render(request, 'dash.html')
 

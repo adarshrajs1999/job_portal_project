@@ -57,12 +57,24 @@ class Job_post(models.Model):
 class Job_application(models.Model):
     jobseeker = models.ForeignKey(Jobseeker,on_delete=models.CASCADE,related_name = "job_application_jobseeker")
     job_post = models.ForeignKey(Job_post,on_delete=models.CASCADE,related_name = 'job_application_job_post')
-    shortlist_status = models.BooleanField(default = 0)
-    is_accepted = models.BooleanField(default = 0)
+    is_shortlisted = models.BooleanField(default = 0)
 
-class Accepted_application(models.Model):
+
+class Shortlist(models.Model):
     employer = models.ForeignKey(Employer, on_delete = models.CASCADE)
     job_application = models.ForeignKey(Job_application, on_delete = models.CASCADE)
+    is_interview_created = models.BooleanField(default = 0)
+
+
+class Interview(models.Model):
+    shortlist = models.ForeignKey(Shortlist,on_delete = models.CASCADE)
+    interview_date = models.DateField()
+    detail = models.TextField()
+    online_meet_link = models.TextField()
+
+
+
+
 
 
 

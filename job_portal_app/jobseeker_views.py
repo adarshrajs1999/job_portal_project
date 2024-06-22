@@ -84,3 +84,7 @@ def jobseeker_cancel_application_all(request,id):
     job_application_object.delete()
     return redirect('jobseeker_view_job_posts')
 
+def jobseeker_view_my_shortlisted_applications(request):
+    job_application_objects = Job_application.objects.filter(is_shortlisted = 1)
+    current_jobseeker_object = Jobseeker.objects.get(user=request.user)
+    return render(request, 'jobseeker/jobseeker_view_my_shortlisted_applications.html',{'job_application_objects':job_application_objects,'current_jobseeker_object':current_jobseeker_object})

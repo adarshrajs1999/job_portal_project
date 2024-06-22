@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form
-from job_portal_app.models import Employer, Job_post, Job_application, Jobseeker, Accepted_application
+from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form, interview_form
+from job_portal_app.models import Employer, Job_post, Job_application, Jobseeker, Shortlist
 
 
 @login_required(login_url = 'login_view')
@@ -85,13 +85,31 @@ def employer_view_applicants_details(request, id):
 
 
 def employer_shortlist_application(request, id):
-    employer_object = Employer.objects.get(user=request.user)
+    employer_object = Employer.objects.get(user = request.user)
     job_application_object = Job_application.objects.get(id = id)
-    accepted_application = Accepted_application(employer = employer_object, job_application = job_application_object)
-    accepted_application.save()
-    job_application_object.is_accepted = 1
+    shortlist_object = Shortlist(employer = employer_object, job_application = job_application_object)
+    shortlist_object.save()
+    job_application_object.is_shortlisted = 1
     job_application_object.save()
     return redirect('employer_view_job_applications')
 
+def employer_view_my_shortlisted_job_applications(request):
+    shortlist_objects = Shortlist.objects.filter(employer__user = request.user)
+    current_employer_object = Employer.objects.get(user=request.user)
+    return render(request,'employer/employer_view_my_shortlisted_job_applications.html',{'shortlist_objects':shortlist_objects,'current_employer_object':current_employer_object})
 
 
+def employer_create_interview_shedule(request, id):
+    shortlist_object = Shortlist.objects.get(id= id)
+    interview_form_object = interview_form()
+    if request.method == 'POST':
+        interview_form_object = interview_form(request.POST)
+        if interview_form_object.is_valid():
+            interview_object = interview_form_object.save(commit = False)
+            interview_object.shortlist = shortlist_object
+            interview_object.save()
+            shortlist_object.is_interview_created = 1
+            shortlist_object.save()
+            return redirect('employer_view_my_shortlisted_job_applications')
+    current_employer_object = Employer.objects.get(user=request.user)
+    return render(request, 'employer/employer_create_interview_shedule.html',{'interview_form_object':interview_form_object,'current_employer_object':current_employer_object})

@@ -42,7 +42,7 @@
 		 	<div class="text-center">
 		 		<img src=" {% static 'assets/images/logo-icon.png' %} " alt="logo icon">
 		 	</div>
-		  <div class="card-title text-uppercase text-center py-3">Log In</div>
+		  <div class="card-title text-uppercase text-center py-3">Login Here</div>
 		    <form method="post">
 				{% csrf_token %}
 			  <div class="form-group">
@@ -74,7 +74,7 @@
 <!--			  <a href=" {% static 'reset-password.html' %} ">Reset Password</a>-->
 <!--			 </div>-->
 <!--			</div>-->
-			 <button type="submit" class="btn btn-light btn-block">Log in</button>
+			 <button type="submit" class="btn btn-light btn-block">Login</button>
             </form><br>
 			 <a href="{% url 'home' %}"><button class="btn btn-light btn-block" style="background-color:green;">Go to Home Page</button></a>
 			 {% for i in messages %}

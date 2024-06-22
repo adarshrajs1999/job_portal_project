@@ -56,6 +56,8 @@ class Job_post(models.Model):
 class Job_application(models.Model):
     jobseeker = models.ForeignKey(Jobseeker,on_delete=models.CASCADE,related_name = "job_application_jobseeker")
     job_post = models.ForeignKey(Job_post,on_delete=models.CASCADE,related_name = 'job_application_job_post')
+    shortlist_status = models.BooleanField(default = 0)
+
 
 
 

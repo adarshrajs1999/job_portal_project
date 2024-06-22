@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form
-from job_portal_app.models import Employer, Job_post, Job_application
+from job_portal_app.models import Employer, Job_post, Job_application, Jobseeker
 
 
 @login_required(login_url = 'login_view')
@@ -82,3 +82,5 @@ def employer_view_applicants_details(request, id):
     current_employer_object = Employer.objects.get(user=request.user)
     return render(request, "employer/employer_view_applicants_details.html",
                   {'jobseeker_object': jobseeker_object, 'current_employer_object': current_employer_object})
+
+

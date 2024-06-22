@@ -22,6 +22,12 @@
       Applicant name:{{i.jobseeker.name}}
     </p>
       <a href="{% url 'employer_view_applicants_details' i.id %}"><button class="btn btn-warning">Check applicant's details</button></a><br><br>
+    {% if i.is_accepted == 0 %}
+    <a href="{% url 'employer_shortlist_application' i.id %}"><button class="btn btn-success">Shortlist this application</button></a>
+    {% elif i.is_accepted == 1 %}
+    <p style="color:yellow;">You have shortlisted this job application.</p>
+    {% endif %}
+
 
   </div>
 </div>

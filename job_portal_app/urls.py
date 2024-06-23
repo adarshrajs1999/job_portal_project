@@ -49,8 +49,9 @@ urlpatterns = [
     path('jobseeker_view_my_shortlisted_applications/',jobseeker_views.jobseeker_view_my_shortlisted_applications,name = 'jobseeker_view_my_shortlisted_applications'),
     path('employer_view_my_shortlisted_job_applications/',employer_views.employer_view_my_shortlisted_job_applications,name = 'employer_view_my_shortlisted_job_applications'),
     path('employer_view_my_shortlisted_job_applications/', employer_views.employer_view_my_shortlisted_job_applications, name='employer_view_my_shortlisted_job_applications'),
-    path('employer_create_interview_shedule/<int:id>/', employer_views.employer_create_interview_shedule, name = 'employer_create_interview_shedule')
-
+    path('employer_create_interview_shedule/<int:id>/', employer_views.employer_create_interview_shedule, name = 'employer_create_interview_shedule'),
+    path('employer_view_interviews_by_me/',employer_views.employer_view_interviews_by_me,name = 'employer_view_interviews_by_me'),
+    path('employer_update_interview/<int:id>/',employer_views.employer_update_interview,name = 'employer_update_interview')
 
 
 ]

@@ -22,18 +22,9 @@
       Applicant name:{{i.job_application.jobseeker.name}}
     </p>
       <a href="{% url 'employer_view_applicants_details' i.job_application.id %}"><button class="btn btn-warning">Check applicant's details</button></a><br><br>
-    {% if i.job_application.is_shortlisted == 0 %}
-    <a href="{% url 'employer_shortlist_application' i.id %}"><button class="btn btn-success">Shortlist this application</button></a>
-    {% elif i.job_application.is_shortlisted == 1 %}
-    <p style="color:yellow;">You have shortlisted this job application.</p>
-    {% if i.is_interview_created == 0 %}
-    <a href="{% url 'employer_create_interview_shedule' i.id %}"><button class="btn btn-success">Create an interview shedule</button></a>
-    {% elif i.is_interview_created == 1 %}
-    <p style="color:pink;">You have created the interview shedule.</p>
 
+    <a href=""><button class="btn btn-success">Open & Edit interview Shedule</button></a>
 
-    {% endif %}
-    {% endif %}
 
 
   </div>

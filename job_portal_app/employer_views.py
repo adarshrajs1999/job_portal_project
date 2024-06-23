@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form, interview_form
-from job_portal_app.models import Employer, Job_post, Job_application, Jobseeker, Shortlist
+from job_portal_app.models import Employer, Job_post, Job_application, Jobseeker, Shortlist, Interview
 
 
 @login_required(login_url = 'login_view')
@@ -95,7 +95,7 @@ def employer_shortlist_application(request, id):
 
 def employer_view_my_shortlisted_job_applications(request):
     shortlist_objects = Shortlist.objects.filter(employer__user = request.user)
-    current_employer_object = Employer.objects.get(user=request.user)
+    current_employer_object = Employer.objects.get(user = request.user)
     return render(request,'employer/employer_view_my_shortlisted_job_applications.html',{'shortlist_objects':shortlist_objects,'current_employer_object':current_employer_object})
 
 
@@ -113,3 +113,21 @@ def employer_create_interview_shedule(request, id):
             return redirect('employer_view_my_shortlisted_job_applications')
     current_employer_object = Employer.objects.get(user=request.user)
     return render(request, 'employer/employer_create_interview_shedule.html',{'interview_form_object':interview_form_object,'current_employer_object':current_employer_object})
+
+
+def employer_view_interviews_by_me(request):
+    interview_objects = Interview.objects.filter(shortlist__employer__user = request.user)
+    current_employer_object = Employer.objects.get(user=request.user)
+    return render(request, 'employer/employer_view_interviews_by_me.html',{'interview_objects':interview_objects,'current_employer_object':current_employer_object})
+
+
+def employer_update_interview(request, id):
+    interview_object = Interview.objects.get(id = id)
+    interview_form_object = interview_form(instance = interview_object)
+    if request.method == 'POST':
+        interview_form_object = interview_form(request.POST ,instance = interview_object)
+        if interview_form_object.is_valid():
+            interview_form_object.save()
+            return redirect('employer_view_interviews_by_me')
+    current_employer_object = Employer.objects.get(user=request.user)
+    return render(request, 'employer/update_interview.html',{'interview_form_object':interview_form_object,'current_employer_object':current_employer_object})

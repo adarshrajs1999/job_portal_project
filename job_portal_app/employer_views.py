@@ -128,6 +128,6 @@ def employer_update_interview(request, id):
         interview_form_object = interview_form(request.POST ,instance = interview_object)
         if interview_form_object.is_valid():
             interview_form_object.save()
-            return redirect('employer_view_interviews_by_me')
+            return redirect('employer_update_interview', id = interview_object.id)
     current_employer_object = Employer.objects.get(user=request.user)
     return render(request, 'employer/update_interview.html',{'interview_form_object':interview_form_object,'current_employer_object':current_employer_object})

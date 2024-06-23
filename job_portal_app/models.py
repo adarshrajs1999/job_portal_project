@@ -70,8 +70,17 @@ class Interview(models.Model):
     shortlist = models.ForeignKey(Shortlist,on_delete = models.CASCADE)
     interview_date = models.DateField()
     detail = models.TextField()
-    online_meet_link = models.TextField()
-    interview_task_link = models.TextField(blank = True,null = True)
+    online_meet_link = models.CharField(max_length=250)
+    interview_task_answer_link = models.CharField(blank = True,null = True)
+    is_hired = models.BooleanField(default = 0)
+    is_rejected = models.BooleanField(default = 0)
+
+
+class Hire(models.Model):
+    interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
+    mail = models.TextField()
+    attachment = models.FileField()
+    contact_info = models.TextField()
 
 
 

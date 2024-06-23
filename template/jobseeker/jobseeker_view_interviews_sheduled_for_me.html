@@ -1,4 +1,4 @@
-{% extends 'employer/employer_dash.html' %}
+{% extends 'jobseeker/jobseeker_dash.html' %}
 
 
 {% block content %}
@@ -19,22 +19,16 @@
       Email:{{i.shortlist.job_application.job_post.employer.email}}<br>
       Phone number:{{i.shortlist.job_application.job_post.employer.phone_number}}<br>
       Last date for application:{{i.shortlist.job_application.job_post.application_last_date}}<br>
-      Applicant name:{{i.shortlist.job_application.jobseeker.name}}
-    </p>
-      <a href="{% url 'employer_view_applicants_details' i.shortlist.job_application.id %}"><button class="btn btn-primary">Check applicant's details</button></a><br><br>
-
-    <a href="{% url 'employer_update_interview' i.id %}"><button class="btn btn-warning">Open or Edit interview Shedule</button></a><br><br>
-    {% if i.is_hired == 0 and i.is_rejected == 0 %}
-    <a href="{% url 'employee_hire' i.id %}"><button class="btn btn-success">Hire this applicant</button></a>
-    <a href="{% url 'employee_reject' i.id %}"><button class="btn btn-danger">Reject this applicant</button></a>
-    {% elif i.is_hired == 1 and i.is_rejected == 0 %}
-    <p style="color:yellow">You hired this applicant! </p>
-    {% elif i.is_hired == 0 and i.is_rejected == 1 %}
-    <p style="color:red;">You rejected this application!</p>
+      Jobseeker name:{{i.shortlist.job_application.jobseeker.name}}<br><br>
+      {% if i.is_hired == 0 and i.is_rejected == 0 %}
+      <a href="{% url 'jobseeker_view_interview_shedule' i.id %}"><button class="btn btn-success">View Interview Shedule</button></a>
+      {% elif i.is_hired == 1 and i.is_rejected == 0 %}
+      <p style="color:yellow;">Congradulations!You are hired for this job role.PLease check further details!</p>
+      {% elif i.is_hired == 0 and i.is_rejected == 1 %}
+      <p style="color:yellow;">We are really sorry!You are not selected for this job role.Better luck next time!</p>
     {% endif %}
 
-
-
+    </p>
   </div>
 </div>
 

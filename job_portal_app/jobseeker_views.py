@@ -91,7 +91,21 @@ def jobseeker_view_my_shortlisted_applications(request):
     return render(request, 'jobseeker/jobseeker_view_my_shortlisted_applications.html',{'shortlist_objects':shortlist_objects, 'current_jobseeker_object':current_jobseeker_object})
 
 
+def jobseeker_view_interviews_sheduled_for_me(request):
+    interview_objects = Interview.objects.filter(shortlist__job_application__jobseeker__user = request.user)
+    current_jobseeker_object = Jobseeker.objects.get(user=request.user)
+    return render(request, 'jobseeker/jobseeker_view_interviews_sheduled_for_me.html',{'interview_objects':interview_objects,'current_jobseeker_object':current_jobseeker_object})
+
 def jobseeker_view_interview_shedule(request, id):
     interview_object = Interview.objects.get(id = id)
+    if request.method == 'POST':
+        interview_task_answer_link = request.POST.get('interview_task_answer_link')
+        interview_object.interview_task_answer_link = interview_task_answer_link
+        interview_object.save()
+        return redirect('jobseeker_view_interview_shedule', id = interview_object.id)
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
     return render(request, 'jobseeker/jobseeker_view_interview_shedule.html',{'interview_object':interview_object,'current_jobseeker_object':current_jobseeker_object})
+
+
+
+

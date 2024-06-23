@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form, interview_form
-from job_portal_app.models import Employer, Job_post, Job_application, Jobseeker, Shortlist, Interview
+from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form, interview_form, \
+    hire_form
+from job_portal_app.models import Employer, Job_post, Job_application, Jobseeker, Shortlist, Interview, Hire
 
 
 @login_required(login_url = 'login_view')
@@ -130,4 +131,34 @@ def employer_update_interview(request, id):
             interview_form_object.save()
             return redirect('employer_update_interview', id = interview_object.id)
     current_employer_object = Employer.objects.get(user=request.user)
-    return render(request, 'employer/update_interview.html',{'interview_form_object':interview_form_object,'current_employer_object':current_employer_object})
+    return render(request, 'employer/employer_update_interview.html',{'interview_form_object':interview_form_object,'current_employer_object':current_employer_object})
+
+def employee_hire(request, id):
+    interview_object = Interview.objects.get(id =id)
+    interview_object.is_hired = 1
+    interview_object.save()
+    return redirect('employer_view_interviews_by_me')
+
+def employee_reject(request, id):
+    interview_object = Interview.objects.get(id =id)
+    interview_object.is_rejected = 1
+    interview_object.save()
+    return redirect('employer_view_interviews_by_me')
+
+def employer_hired_applications_by_me(request):
+    hire_objects = Hire.objects.filter(interview__shortlist__employer__user = request.user)
+    return render(request, 'employer/employer_hired_applications_by_me.html',{'hire_objects':hire_objects})
+
+
+
+
+
+
+
+
+
+
+
+
+
+

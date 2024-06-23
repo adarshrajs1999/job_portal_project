@@ -1,6 +1,6 @@
 from django import forms
 
-from job_portal_app.models import Employer, User_model, Jobseeker, Feedback, Job_post, Interview
+from job_portal_app.models import Employer, User_model, Jobseeker, Feedback, Job_post, Interview, Hire
 from django.contrib.auth.forms import UserCreationForm
 
 class date_input(forms.DateInput):
@@ -74,8 +74,14 @@ class job_post_update_form(forms.ModelForm):
 
 class interview_form(forms.ModelForm):
     interview_date = forms.DateField(widget = date_input)
+    interview_task_answer_link = forms.CharField(required = False, widget = forms.TextInput(attrs = {'readonly':'readonly'}))
     class Meta:
         model = Interview
         fields = ('__all__')
-        exclude = ('shortlist',)
+        exclude = ('shortlist','is_hired','is_rejected',)
 
+class hire_form(forms.ModelForm):
+    class Meta:
+        model = Hire
+        fields = ('__all__')
+        exclude = ('interview',)

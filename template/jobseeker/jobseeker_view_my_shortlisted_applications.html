@@ -23,7 +23,10 @@
 {% if i.is_interview_created == 0 %}
       <p style="color:yellow;">You are shortlisted.Please wait for interview shedule!</p>
 {% elif i.is_interview_created == 1 %}
-    <p style="color:yellow;">You are sheduled for an interview!Please check interview details!</p>
+    <p style="color:yellow;">
+      You are sheduled for an interview!<br>
+      Please check interview details for further procedures!
+    </p>
 {% endif %}
     </p>
   </div>

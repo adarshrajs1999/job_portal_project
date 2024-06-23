@@ -1,0 +1,37 @@
+{% extends 'employer/employer_dash.html' %}
+
+
+{% block content %}
+
+<div style="display:grid;grid-template-columns:1fr;grid-gap:50px;">
+
+{% for i in hire_objects %}
+
+<div class="card" style="width:60%;margin:auto;">
+  <img src="{{i.interview.shortlist.job_application.job_post.poster_image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">
+      Employer:{{i.interview.shortlist.job_application.job_post.employer.name}}<br>
+      Job roles:{{i.interview.shortlist.job_application.job_post.job_roles}}<br>
+      Job descriptions:{{i.interview.shortlist.job_application.job_post.job_description}}<br>
+      Job requirements:{{i.interview.shortlist.job_application.job_post.requirements}}<br>
+      Required qualification:{{i.interview.shortlist.job_application.job_post.educational_qualification}}<br>
+      Email:{{i.interview.shortlist.job_application.job_post.employer.email}}<br>
+      Phone number:{{i.interview.shortlist.job_application.job_post.employer.phone_number}}<br>
+      Last date for application:{{i.interview.shortlist.job_application.job_post.application_last_date}}<br>
+      Applicant name:{{i.interview.shortlist.job_application.jobseeker.name}}
+    </p>
+      <a href="{% url 'employer_view_applicants_details' i.interview.shortlist.job_application.id %}"><button class="btn btn-primary">Check applicant's details</button></a><br><br>
+
+
+
+
+
+  </div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

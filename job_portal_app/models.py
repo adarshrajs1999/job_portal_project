@@ -78,7 +78,7 @@ class Interview(models.Model):
 
 class Hire(models.Model):
     interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
-    mail = models.TextField()
+    message = models.TextField()
     attachment = models.FileField()
     contact_info = models.TextField()
 

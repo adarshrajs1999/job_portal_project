@@ -3,7 +3,8 @@ from django.shortcuts import redirect, render
 
 from job_portal_app.filters import Job_filterset
 from job_portal_app.forms import feedback_form, jobseeker_profile_update_form
-from job_portal_app.models import Jobseeker, Feedback, Job_post, Job_application
+from job_portal_app.models import Jobseeker, Feedback, Job_post, Job_application, Shortlist
+
 
 @login_required(login_url = 'login_view')
 def jobseeker_feedback(request):
@@ -85,6 +86,6 @@ def jobseeker_cancel_application_all(request,id):
     return redirect('jobseeker_view_job_posts')
 
 def jobseeker_view_my_shortlisted_applications(request):
-    job_application_objects = Job_application.objects.filter(is_shortlisted = 1)
-    current_jobseeker_object = Jobseeker.objects.get(user=request.user)
-    return render(request, 'jobseeker/jobseeker_view_my_shortlisted_applications.html',{'job_application_objects':job_application_objects,'current_jobseeker_object':current_jobseeker_object})
+    shortlist_objects = Shortlist.objects.filter(job_application__jobseeker__user = request.user)
+    current_jobseeker_object = Jobseeker.objects.get(user = request.user)
+    return render(request, 'jobseeker/jobseeker_view_my_shortlisted_applications.html',{'shortlist_objects':shortlist_objects, 'current_jobseeker_object':current_jobseeker_object})

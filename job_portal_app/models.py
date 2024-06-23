@@ -71,7 +71,7 @@ class Interview(models.Model):
     interview_date = models.DateField()
     detail = models.TextField()
     online_meet_link = models.TextField()
-
+    interview_task_link = models.TextField(blank = True,null = True)
 
 
 

@@ -22,8 +22,11 @@
       Applicant name:{{i.job_application.jobseeker.name}}
     </p>
       <a href="{% url 'employer_view_applicants_details' i.job_application.id %}"><button class="btn btn-warning">Check applicant's details</button></a><br><br>
-
-    <a href=""><button class="btn btn-success">Open & Edit interview Shedule</button></a>
+{% if i.is_interview_created == 0 %}
+    <a href="{% url 'employer_create_interview_shedule' i.id %}"><button class="btn btn-success">Create an ineterview shedule</button></a>
+{% elif i.is_interview_created == 1 %}
+    <p style="color:yellow;">You have created an inetrview shedule for this job application!</p>
+{% endif %}
 
 
 

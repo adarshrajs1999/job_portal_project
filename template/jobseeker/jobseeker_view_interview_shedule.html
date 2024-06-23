@@ -1,0 +1,26 @@
+{% extends 'jobseeker/jobseeker_dash.html' %}
+
+{% block content %}
+
+<form method="POST" style="width:100%;">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="form-control-label">Interview Date</label>
+    <input readonly value="{{interview_object.interview_date}}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label class="form-control-label">Detail</label>
+        <input readonly value="{{interview_object.detail}}" class="form-control">
+    </div>
+     <div class="form-group">
+        <label class="form-control-label">Online meet link</label>
+        <input readonly value="{{interview_object.online_meet_link}}"  class="form-control">
+     </div>
+     <div class="form-group">
+        <label class="form-control-label">Interview task link</label>
+        <input type="text" name="interview_task_link" class="form-control">
+     </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% endblock %}

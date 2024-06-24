@@ -119,7 +119,7 @@ def employer_create_interview_shedule(request, id):
 def employer_view_interviews_by_me(request):
     interview_objects = Interview.objects.filter(shortlist__employer__user = request.user)
     current_employer_object = Employer.objects.get(user=request.user)
-    return render(request, 'employer/employer_view_interviews_by_me.html',{'interview_objects':interview_objects,'current_employer_object':current_employer_object})
+    return render(request, 'employer/employer_view_interviews_sheduled_by_me.html',{'interview_objects':interview_objects,'current_employer_object':current_employer_object})
 
 
 def employer_update_interview(request, id):
@@ -149,7 +149,7 @@ def employee_reject(request, id):
 def employer_view_hired_by_me(request):
     interview_objects = Interview.objects.filter(shortlist__employer__user = request.user, is_hired = 1)
     current_employer_object = Employer.objects.get(user=request.user)
-    return render(request,'employer/employer_view_hired_by_me.html',{'interview_objects':interview_objects,'current_employer_object':current_employer_object})
+    return render(request,'employer/employer_view_job_applications_hired_by_me.html',{'interview_objects':interview_objects,'current_employer_object':current_employer_object})
 
 def employer_send_mail(request, id):
     interview_object = Interview.objects.get(id = id)

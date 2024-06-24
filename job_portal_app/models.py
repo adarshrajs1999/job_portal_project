@@ -74,13 +74,14 @@ class Interview(models.Model):
     interview_task_answer_link = models.CharField(blank = True,null = True)
     is_hired = models.BooleanField(default = 0)
     is_rejected = models.BooleanField(default = 0)
+    is_mailed = models.BooleanField(default = 0)
 
 
 class Hire(models.Model):
     interview = models.ForeignKey(Interview, on_delete=models.CASCADE)
     message = models.TextField()
-    attachment = models.FileField()
-    contact_info = models.TextField()
+    attachment = models.FileField(blank=True,null=True)
+    address_and_contact = models.TextField()
 
 
 

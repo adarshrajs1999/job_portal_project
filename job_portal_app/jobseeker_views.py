@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 
 from job_portal_app.filters import Job_filterset
 from job_portal_app.forms import feedback_form, jobseeker_profile_update_form
-from job_portal_app.models import Jobseeker, Feedback, Job_post, Job_application, Shortlist, Interview
+from job_portal_app.models import Jobseeker, Feedback, Job_post, Job_application, Shortlist, Interview, Hire
 
 
 @login_required(login_url = 'login_view')
@@ -106,6 +106,8 @@ def jobseeker_view_interview_shedule(request, id):
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
     return render(request, 'jobseeker/jobseeker_view_interview_shedule.html',{'interview_object':interview_object,'current_jobseeker_object':current_jobseeker_object})
 
-
-
+def jobseeker_view_my_hired_applications(request):
+    hire_objects = Hire.objects.filter(interview__shortlist__job_application__jobseeker__user = request.user)
+    current_jobseeker_object = Jobseeker.objects.get(user=request.user)
+    return render(request,'jobseeker/jobseeker_check_email_for_my_hired_applications.html',{'hire_objects':hire_objects,'current_jobseeker_object':current_jobseeker_object})
 

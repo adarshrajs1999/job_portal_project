@@ -145,12 +145,26 @@ def employee_reject(request, id):
     interview_object.save()
     return redirect('employer_view_interviews_by_me')
 
-def employer_hired_applications_by_me(request):
-    hire_objects = Hire.objects.filter(interview__shortlist__employer__user = request.user)
-    return render(request, 'employer/employer_hired_applications_by_me.html',{'hire_objects':hire_objects})
 
+def employer_view_hired_by_me(request):
+    interview_objects = Interview.objects.filter(shortlist__employer__user = request.user, is_hired = 1)
+    current_employer_object = Employer.objects.get(user=request.user)
+    return render(request,'employer/employer_view_hired_by_me.html',{'interview_objects':interview_objects,'current_employer_object':current_employer_object})
 
-
+def employer_send_mail(request, id):
+    interview_object = Interview.objects.get(id = id)
+    hire_form_object = hire_form()
+    if request.method == 'POST':
+        hire_form_object = hire_form(request.POST,request.FILES)
+        if hire_form_object.is_valid():
+            hire_object = hire_form_object.save(commit = False)
+            hire_object.interview = interview_object
+            hire_object.save()
+            interview_object.is_mailed = 1
+            interview_object.save()
+            return redirect('employer_view_hired_by_me')
+    current_employer_object = Employer.objects.get(user=request.user)
+    return render(request, 'employer/employer_send_mail.html',{'hire_form_object':hire_form_object,'current_employer_object':current_employer_object})
 
 
 

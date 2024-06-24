@@ -1,4 +1,4 @@
-{% extends 'employer/employer_dash.html' %}
+{% extends 'jobseeker/jobseeker_dash.html' %}
 
 
 {% block content %}
@@ -7,10 +7,10 @@
 
 {% for i in hire_objects %}
 
-<div class="card" style="width:60%;margin:auto;">
+<div class="card" style="width:60%;margin:auto;background-color:#E6E6FA;">
   <img src="{{i.interview.shortlist.job_application.job_post.poster_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">
+    <p class="card-text" style="color:black;">
       Employer:{{i.interview.shortlist.job_application.job_post.employer.name}}<br>
       Job roles:{{i.interview.shortlist.job_application.job_post.job_roles}}<br>
       Job descriptions:{{i.interview.shortlist.job_application.job_post.job_description}}<br>
@@ -19,14 +19,23 @@
       Email:{{i.interview.shortlist.job_application.job_post.employer.email}}<br>
       Phone number:{{i.interview.shortlist.job_application.job_post.employer.phone_number}}<br>
       Last date for application:{{i.interview.shortlist.job_application.job_post.application_last_date}}<br>
-      Applicant name:{{i.interview.shortlist.job_application.jobseeker.name}}
+      Jobseeker name:{{i.interview.shortlist.job_application.jobseeker.name}}<br><br>
+
+  <h3 style="color:red;">Mail From Employer</h3><br>
+
+  <p style="color:green;">Message:</p>
+  <p style="color:brown;">{{i.message}}</p>
+  <p style="color:green;">Address and Contact Info:</p>
+  <p style="color:brown;">{{i.address_and_contact}}</p>
+  {% if i.attachment %}
+  <p style="color:green;">Attachment:</p>
+  <a href="{{i.attachment.url}}" class="btn btn-info">View attachment</a><br>
+  {% endif %}
+  </p>
+
+
+
     </p>
-      <a href="{% url 'employer_view_applicants_details' i.interview.shortlist.job_application.id %}"><button class="btn btn-primary">Check applicant's details</button></a><br><br>
-
-
-
-
-
   </div>
 </div>
 

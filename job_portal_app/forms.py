@@ -78,7 +78,7 @@ class interview_form(forms.ModelForm):
     class Meta:
         model = Interview
         fields = ('__all__')
-        exclude = ('shortlist','is_hired','is_rejected',)
+        exclude = ('shortlist','is_hired','is_rejected','is_mailed')
 
 class hire_form(forms.ModelForm):
     class Meta:

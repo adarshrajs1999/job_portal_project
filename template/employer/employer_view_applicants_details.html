@@ -2,19 +2,19 @@
 
 {% block content %}
 
-<div class="card" style="width:60%;margin:auto;">
+<div class="card" style="width:60%;margin:auto;background-color:#E6E6FA;">
   <img src="{{jobseeker_object.profile_picture.url}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">
-    <h3 style="color:yellow;">Applicants details</h3>
-    Name:{{jobseeker_object.name}}<br>
-    Qualification:{{jobseeker_object.qualifictaion}}<br>
-    Bio:{{jobseeker_object.bio}}<br>
-    Date of birth:{{jobseeker_object.dob}}<br>
-    Adress:{{jobseeker_object.address}}<br>
-    Phone number:{{jobseeker_object.phone_number}}<br>
-    Email:{{jobseeker_object.email}}<br>
-    Resume:<a href="{{jobseeker_object.resume.url}}" style="color:blue;"><button class="btn btn-warning">View resume</button></a>
+    <h3 style="color:green;">Applicants details</h3><br>
+    <p class="card-text" style="color:black;">
+    Name: {{jobseeker_object.name}}<br><br>
+    Qualification: {{jobseeker_object.qualification}}<br><br>
+    Bio: {{jobseeker_object.bio}}<br><br>
+    Date of birth: {{jobseeker_object.dob}}<br><br>
+    Adress: {{jobseeker_object.address}}<br><br>
+    Phone number: {{jobseeker_object.phone_number}}<br><br>
+    Email: {{jobseeker_object.email}}<br><br>
+    Resume: <a href="{{jobseeker_object.resume.url}}" style="color:blue;"><button class="btn btn-success">View resume</button></a>
     </p>
 
   </div>

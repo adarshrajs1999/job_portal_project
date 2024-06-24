@@ -32,10 +32,12 @@
     {% if i.apply_status == 0 %}
     <a href="{% url 'job_apply' i.id %}" class="btn btn-warning" style="margin-right:10px;">Apply Now</a>
     {% else %}
-    <h6 style="color:brown;">You have successfully applied for this job.If your profile is selcted recruiter will personally contact you through email or phone number.</h6>
+    <h6 style="color:brown;">You have successfully applied for this job.If your profile is selcted recruiter will personally contact you through email or phone number.</h6><br>
     <a href="{% url 'jobseeker_cancel_application_all' i.id %}" class="btn btn-danger" onclick="confirm_cancel()">Cancel this job application</a>
     {% endif %}
+
   </div>
+  <br>
 </div>
 
 {% endfor %}

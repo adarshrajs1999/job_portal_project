@@ -34,13 +34,6 @@ class Jobseeker(models.Model):
     def __str__(self):
         return self.name
 
-class Feedback(models.Model):
-    jobseeker = models.ForeignKey(Jobseeker,on_delete = models.CASCADE,related_name = 'feedback_jobseeker')
-    date = models.DateField(auto_now = True)
-    subject = models.CharField(max_length = 250)
-    feedback = models.TextField()
-    # None-->for python,null-->for database column to indicate the absence of value
-    reply = models.TextField(blank = True, null = True)
 
 class Job_post(models.Model):
     employer = models.ForeignKey(Employer,on_delete = models.CASCADE,related_name = "job_post_jobseeker")
@@ -83,7 +76,13 @@ class Hire(models.Model):
     attachment = models.FileField(blank=True,null=True)
     address_and_contact = models.TextField()
 
-
+class Feedback(models.Model):
+    jobseeker = models.ForeignKey(Jobseeker,on_delete = models.CASCADE,related_name = 'feedback_jobseeker')
+    date = models.DateField(auto_now = True)
+    subject = models.CharField(max_length = 250)
+    feedback = models.TextField()
+    # None-->for python,null-->for database column to indicate the absence of value
+    reply = models.TextField(blank = True, null = True)
 
 
 

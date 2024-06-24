@@ -7,10 +7,10 @@
 
 {% for i in job_post_objects %}
 
-<div class="card" style="width:60%;margin:auto;">
+<div class="card" style="width:60%;margin:auto;background-color:#E6E6FA;">
   <img src="{{i.poster_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">
+    <p class="card-text" style="color:black;">
       Employer : {{i.employer.name}}<br><br>
       Job roles : {{i.job_roles}}<br><br>
       Job descriptions : {{i.job_description}}<br><br>

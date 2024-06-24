@@ -7,23 +7,23 @@
 
 {% for i in shortlist_objects %}
 
-<div class="card" style="width:60%;margin:auto;">
+<div class="card" style="width:60%;margin:auto;background-color:#E6E6FA;">
   <img src="{{i.job_application.job_post.poster_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">
-      Employer:{{i.job_application.job_post.employer.name}}<br>
-      Job roles:{{i.job_application.job_post.job_roles}}<br>
-      Job descriptions:{{i.job_application.job_post.job_description}}<br>
-      Job requirements:{{i.job_application.job_post.requirements}}<br>
-      Required qualification:{{i.job_application.job_post.educational_qualification}}<br>
-      Email:{{i.job_application.job_post.employer.email}}<br>
-      Phone number:{{i.job_application.job_post.employer.phone_number}}<br>
-      Last date for application:{{i.job_application.job_post.application_last_date}}<br>
+    <p class="card-text" style="color:black;">
+      Employer:{{i.job_application.job_post.employer.name}}<br><br>
+      Job roles:{{i.job_application.job_post.job_roles}}<br><br>
+      Job descriptions:{{i.job_application.job_post.job_description}}<br><br>
+      Job requirements:{{i.job_application.job_post.requirements}}<br><br>
+      Required qualification:{{i.job_application.job_post.educational_qualification}}<br><br>
+      Email:{{i.job_application.job_post.employer.email}}<br><br>
+      Phone number:{{i.job_application.job_post.employer.phone_number}}<br><br>
+      Last date for application:{{i.job_application.job_post.application_last_date}}<br><br>
       Jobseeker name:{{i.job_application.jobseeker.name}}<br><br>
 {% if i.is_interview_created == 0 %}
-      <p style="color:yellow;">You are shortlisted.Please wait for interview shedule!</p>
+      <p style="color:green;">You are shortlisted.Please wait for interview shedule!</p>
 {% elif i.is_interview_created == 1 %}
-    <p style="color:yellow;">
+    <p style="color:green;">
       You are sheduled for an interview!<br>
       Please check interview details for further procedures!
     </p>

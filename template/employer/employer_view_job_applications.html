@@ -7,25 +7,25 @@
 
 {% for i in job_application_objects %}
 
-<div class="card" style="width:60%;margin:auto;">
+<div class="card" style="width:60%;margin:auto;background-color:#E6E6FA;">
   <img src="{{i.job_post.poster_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">
-      Employer:{{i.job_post.employer.name}}<br>
-      Job roles:{{i.job_post.job_roles}}<br>
-      Job descriptions:{{i.job_post.job_description}}<br>
-      Job requirements:{{i.job_post.requirements}}<br>
-      Required qualification:{{i.job_post.educational_qualification}}<br>
-      Email:{{i.job_post.employer.email}}<br>
-      Phone number:{{i.job_post.employer.phone_number}}<br>
-      Last date for application:{{i.job_post.application_last_date}}<br>
-      Applicant name:{{i.jobseeker.name}}
+    <p class="card-text" style="color:black;">
+      Employer:{{i.job_post.employer.name}}<br><br>
+      Job roles:{{i.job_post.job_roles}}<br><br>
+      Job descriptions:{{i.job_post.job_description}}<br><br>
+      Job requirements:{{i.job_post.requirements}}<br><br>
+      Required qualification:{{i.job_post.educational_qualification}}<br><br>
+      Email:{{i.job_post.employer.email}}<br><br>
+      Phone number:{{i.job_post.employer.phone_number}}<br><br>
+      Last date for application:{{i.job_post.application_last_date}}<br><br>
+      Applicant name:{{i.jobseeker.name}}<br><br>
     </p>
       <a href="{% url 'employer_view_applicants_details' i.id %}"><button class="btn btn-warning">Check applicant's details</button></a><br><br>
     {% if i.is_shortlisted == 0 %}
     <a href="{% url 'employer_shortlist_application' i.id %}"><button class="btn btn-success">Shortlist this application</button></a>
     {% elif i.is_shortlisted == 1 %}
-    <p style="color:yellow;">You have shortlisted this job application.</p>
+    <p style="color:green;">You have shortlisted this job application.</p>
     {% endif %}
 
 

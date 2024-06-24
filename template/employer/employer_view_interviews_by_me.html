@@ -7,19 +7,19 @@
 
 {% for i in interview_objects %}
 
-<div class="card" style="width:60%;margin:auto;">
+<div class="card" style="width:60%;margin:auto;background-color:#E6E6FA;">
   <img src="{{i.shortlist.job_application.job_post.poster_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">
-      Employer:{{i.shortlist.job_application.job_post.employer.name}}<br>
-      Job roles:{{i.shortlist.job_application.job_post.job_roles}}<br>
-      Job descriptions:{{i.shortlist.job_application.job_post.job_description}}<br>
-      Job requirements:{{i.shortlist.job_application.job_post.requirements}}<br>
-      Required qualification:{{i.shortlist.job_application.job_post.educational_qualification}}<br>
-      Email:{{i.shortlist.job_application.job_post.employer.email}}<br>
-      Phone number:{{i.shortlist.job_application.job_post.employer.phone_number}}<br>
-      Last date for application:{{i.shortlist.job_application.job_post.application_last_date}}<br>
-      Applicant name:{{i.shortlist.job_application.jobseeker.name}}
+    <p class="card-text" style="color:black;">
+      Employer:{{i.shortlist.job_application.job_post.employer.name}}<br><br>
+      Job roles:{{i.shortlist.job_application.job_post.job_roles}}<br><br>
+      Job descriptions:{{i.shortlist.job_application.job_post.job_description}}<br><br>
+      Job requirements:{{i.shortlist.job_application.job_post.requirements}}<br><br>
+      Required qualification:{{i.shortlist.job_application.job_post.educational_qualification}}<br><br>
+      Email:{{i.shortlist.job_application.job_post.employer.email}}<br><br>
+      Phone number:{{i.shortlist.job_application.job_post.employer.phone_number}}<br><br>
+      Last date for application:{{i.shortlist.job_application.job_post.application_last_date}}<br><br>
+      Applicant name:{{i.shortlist.job_application.jobseeker.name}}<br><br>
     </p>
       <a href="{% url 'employer_view_applicants_details' i.shortlist.job_application.id %}"><button class="btn btn-warning">Check applicant's details</button></a><br><br>
 
@@ -29,7 +29,7 @@
     <a href="{% url 'employee_hire' i.id %}"><button class="btn btn-success">Hire this applicant</button></a>
     <a href="{% url 'employee_reject' i.id %}"><button class="btn btn-danger">Reject this applicant</button></a>
     {% elif i.is_hired == 1 and i.is_rejected == 0 %}
-    <p style="color:yellow">You hired this applicant! </p>
+    <p style="color:green;">You hired this applicant! </p>
     {% elif i.is_hired == 0 and i.is_rejected == 1 %}
     <p style="color:red;">You rejected this application!</p>
     {% endif %}

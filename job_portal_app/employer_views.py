@@ -169,7 +169,7 @@ def employer_send_mail(request, id):
             from_email = settings.EMAIL_HOST_USER
             recipient_list = [jobseeker_object.email,]
             send_mail(subject, message, from_email, recipient_list)
-            messages.success(request,'Mailed through gmail.com successfully')
+            messages.success(request,'Successfully mailed through google.')
 
             interview_object.is_mailed = 1
             interview_object.save()

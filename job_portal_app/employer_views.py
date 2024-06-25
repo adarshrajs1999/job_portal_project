@@ -1,10 +1,12 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from job_portal_app.forms import employer_profile_update_form, job_post_form, job_post_update_form, interview_form, \
     hire_form
 from job_portal_app.models import Employer, Job_post, Job_application, Jobseeker, Shortlist, Interview, Hire
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 @login_required(login_url = 'login_view')
 def employer_profile_update(request):
@@ -153,6 +155,7 @@ def employer_view_hired_by_me(request):
 
 def employer_send_mail(request, id):
     interview_object = Interview.objects.get(id = id)
+    jobseeker_object = interview_object.shortlist.job_application.jobseeker
     hire_form_object = hire_form()
     if request.method == 'POST':
         hire_form_object = hire_form(request.POST,request.FILES)
@@ -160,11 +163,23 @@ def employer_send_mail(request, id):
             hire_object = hire_form_object.save(commit = False)
             hire_object.interview = interview_object
             hire_object.save()
+
+            subject = "You are hired"
+            message = f"Message:{hire_object.message} \n {hire_object.address_and_contact}"
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [jobseeker_object.email,]
+            send_mail(subject, message, from_email, recipient_list)
+            messages.success(request,'Mailed through gmail.com successfully')
+
             interview_object.is_mailed = 1
             interview_object.save()
+
             return redirect('employer_view_hired_by_me')
+
     current_employer_object = Employer.objects.get(user=request.user)
     return render(request, 'employer/employer_send_mail.html',{'hire_form_object':hire_form_object,'current_employer_object':current_employer_object})
+
+
 
 
 

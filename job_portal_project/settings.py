@@ -154,5 +154,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'adarshrajstest@gmail.com'
-EMAIL_HOST_PASSWORD = 'sviw tcpy esqg afdr'
+EMAIL_HOST_PASSWORD = 'gkjh remk nlqb otbq'
 

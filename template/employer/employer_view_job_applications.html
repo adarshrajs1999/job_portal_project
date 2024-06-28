@@ -27,6 +27,7 @@
     {% elif i.is_shortlisted == 1 %}
     <p style="color:green;">You have shortlisted this job application.</p>
     {% endif %}
+    <a href="{% url 'delete_job_application' i.id %}" class="btn btn-danger" onclick="confirm_delete()">Delete this job application</a>
 
 
   </div>

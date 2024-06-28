@@ -179,7 +179,10 @@ def employer_send_mail(request, id):
     current_employer_object = Employer.objects.get(user=request.user)
     return render(request, 'employer/employer_send_mail.html',{'hire_form_object':hire_form_object,'current_employer_object':current_employer_object})
 
-
+def delete_job_application(request, id):
+    job_application_object = Job_application.objects.get(id = id)
+    job_application_object.delete()
+    return redirect('employer_view_job_applications')
 
 
 

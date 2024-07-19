@@ -30,8 +30,7 @@ def jobseeker_view_feedbacks(request):
 def jobseeker_feedback_delete(request, id):
     feedback_object = Feedback.objects.get(id = id)
     feedback_object.delete()
-    current_jobseeker_object = Jobseeker.objects.get(user=request.user)
-    return redirect('jobseeker_view_feedbacks',{'current_jobseeker_object':current_jobseeker_object})
+    return redirect('jobseeker_view_feedbacks')
 
 @login_required(login_url = 'login_view')
 def jobseeker_profile_update(request):

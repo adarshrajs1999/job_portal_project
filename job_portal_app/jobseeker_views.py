@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 
 from job_portal_app.filters import Job_filterset
@@ -49,8 +50,11 @@ def jobseeker_view_job_posts(request):
     job_post_objects = Job_post.objects.all()
     job_filterset_object = Job_filterset(request.GET, queryset = job_post_objects)
     job_post_objects = job_filterset_object.qs
+    paginator = Paginator( job_post_objects, 1)  # Show 25 contacts per page.
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
-    return render(request,"jobseeker/jobseeker_view_job_posts.html",{'job_post_objects':job_post_objects,'job_filterset_object':job_filterset_object,'current_jobseeker_object':current_jobseeker_object})
+    return render(request,"jobseeker/jobseeker_view_job_posts.html",{'page_obj':page_obj,'job_filterset_object':job_filterset_object,'current_jobseeker_object':current_jobseeker_object})
 
 @login_required(login_url = 'login_view')
 def job_apply(request, id):

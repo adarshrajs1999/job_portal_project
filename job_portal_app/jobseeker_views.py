@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 
@@ -7,7 +6,7 @@ from job_portal_app.forms import feedback_form, jobseeker_profile_update_form
 from job_portal_app.models import Jobseeker, Feedback, Job_post, Job_application, Shortlist, Interview, Hire
 
 
-@login_required(login_url = 'login_view')
+
 def jobseeker_feedback(request):
     feedback_form_data = feedback_form()
     current_jobseeker_object = Jobseeker.objects.get(user = request.user)
@@ -21,19 +20,19 @@ def jobseeker_feedback(request):
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
     return render(request, 'jobseeker/jobseeker_feedback.html',{'feedback_form_data':feedback_form_data,'current_jobseeker_object':current_jobseeker_object})
 
-@login_required(login_url = 'login_view')
+
 def jobseeker_view_feedbacks(request):
     feedback_objects = Feedback.objects.all()
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
     return render(request,'jobseeker/jobseeker_view_feedbacks.html',{'feedback_objects':feedback_objects,'current_jobseeker_object':current_jobseeker_object})
 
-@login_required(login_url = 'login_view')
+
 def jobseeker_feedback_delete(request, id):
     feedback_object = Feedback.objects.get(id = id)
     feedback_object.delete()
     return redirect('jobseeker_view_feedbacks')
 
-@login_required(login_url = 'login_view')
+
 def jobseeker_profile_update(request):
     jobseeker_object = Jobseeker.objects.get(user = request.user)
     jobseeker_profile_update_form_data = jobseeker_profile_update_form(instance = jobseeker_object)
@@ -45,7 +44,7 @@ def jobseeker_profile_update(request):
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
     return render(request,"jobseeker/jobseeker_profile_update.html",{'jobseeker_profile_update_form_data':jobseeker_profile_update_form_data,'current_jobseeker_object':current_jobseeker_object})
 
-@login_required(login_url = 'login_view')
+
 def jobseeker_view_job_posts(request):
     job_post_objects = Job_post.objects.all()
     job_filterset_object = Job_filterset(request.GET, queryset = job_post_objects)
@@ -56,7 +55,7 @@ def jobseeker_view_job_posts(request):
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
     return render(request,"jobseeker/jobseeker_view_job_posts.html",{'page_obj':page_obj,'job_filterset_object':job_filterset_object,'current_jobseeker_object':current_jobseeker_object})
 
-@login_required(login_url = 'login_view')
+
 def job_apply(request, id):
     jobseeker_object = Jobseeker.objects.get(user = request.user)
     job_post_object = Job_post.objects.get(id = id)
@@ -67,7 +66,7 @@ def job_apply(request, id):
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
     return redirect('jobseeker_view_job_posts')
 
-@login_required(login_url = 'login_view')
+
 def jobseeker_view_my_job_applications(request):
     job_application_objects = Job_application.objects.filter(jobseeker__user = request.user)
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)

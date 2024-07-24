@@ -53,8 +53,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'job_portal_app.middlewares.login_required_middleware',
+    'job_portal_app.middlewares.invalid_url_middleware'
 
 ]
+
+
 
 ROOT_URLCONF = 'job_portal_project.urls'
 
@@ -153,4 +157,14 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'adarshrajstest@gmail.com'
 EMAIL_HOST_PASSWORD = 'gkjh remk nlqb otbq'
+
+EXEMPT_URLS = [
+    'home',
+    'employer_register',
+    'jobseeker_register',
+    'login_view'
+]
+
+LOGIN_URL = 'login_view'
+
 

@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from job_portal_app.forms import employer_form, user_form, jobseeker_form
 from django.contrib.auth import authenticate, login, logout
@@ -18,18 +17,18 @@ def dash(request):
     return render(request, 'dash.html')
 
 
-@login_required(login_url = 'login_view')
+
 def admin_dash(request):
     return render(request, 'admin/admin_dash.html')
 
 
-@login_required(login_url = 'login_view')
+
 def employer_dash(request):
     current_employer_object = Employer.objects.get(user=request.user)
     return render(request, 'employer/employer_dash.html', {'current_employer_object': current_employer_object})
 
 
-@login_required(login_url = 'login_view')
+
 def jobseeker_dash(request):
     current_jobseeker_object = Jobseeker.objects.get(user=request.user)
     return render(request, 'jobseeker/jobseeker_dash.html', {'current_jobseeker_object': current_jobseeker_object})

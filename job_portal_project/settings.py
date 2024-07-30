@@ -53,8 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'job_portal_app.middlewares.login_required_middleware',
-    'job_portal_app.middlewares.invalid_url_middleware'
+    'job_portal_app.middlewares.Login_required_middleware',
+    'job_portal_app.middlewares.Invalid_url_middleware'
 
 ]
 

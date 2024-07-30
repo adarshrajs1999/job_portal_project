@@ -3,24 +3,28 @@ from django.urls import reverse
 from django.conf import settings
 
 
-def login_required_middleware(get_response):
-    # One-time configuration and initialization.
-    exempt_urls = [reverse(url) for url in settings.EXEMPT_URLS]
-    def middleware(request):
-        # Skip processing if the user is already authenticated
-        response = get_response(request)
+
+class Login_required_middleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+        self.exempt_urls = [reverse(url) for url in settings.EXEMPT_URLS]
+
+    def __call__(self, request):
+        response = self.get_response(request)
         if not request.user.is_authenticated:
-            # Check if the requested URL is in the exempt list
-            if request.path not in exempt_urls and response.status_code != 404:
+            if request.path not in self.exempt_urls and response.status_code != 404:
                 return redirect(settings.LOGIN_URL)
         return response
-    return middleware
 
-def invalid_url_middleware(get_response):
-    def middleware(request):
-        response = get_response(request)
+
+class Invalid_url_middleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
         if response.status_code == 404:
-            return render(request,'404.html',status = 404)
+            return render(request, '404.html', status=404)
         return response
-    return middleware
+
 

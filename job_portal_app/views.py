@@ -13,8 +13,11 @@ def home(request):
     return render(request, 'home.html')
 
 
-def dash(request):
-    return render(request, 'dash.html')
+def register_dash(request):
+    return render(request, 'register_dash.html')
+
+def user_dash(request):
+    return render(request, 'user_dash.html')
 
 
 

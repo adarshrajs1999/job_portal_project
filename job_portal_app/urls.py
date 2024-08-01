@@ -4,7 +4,8 @@ from job_portal_app import views, admin_views, jobseeker_views, employer_views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('dash/', views.dash, name='dash'),
+    path('register_dash/', views.register_dash, name='register_dash'),
+    path('user_dash/',views.user_dash,name='user_dash'),
     path('admin_dash/', views.admin_dash, name='admin_dash'),
     path('employer_dash/', views.employer_dash, name='employer_dash'),
     path('login_page/', views.login_page, name='login_page'),

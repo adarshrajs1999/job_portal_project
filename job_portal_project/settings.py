@@ -156,7 +156,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'adarshrajstest@gmail.com'
-EMAIL_HOST_PASSWORD = 'your email secret key'
+EMAIL_HOST_PASSWORD = 'your generated email secret key'
 
 EXEMPT_URLS = [
     'home',
